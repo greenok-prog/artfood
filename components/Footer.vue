@@ -1,0 +1,229 @@
+<template>
+    <footer class="footer">
+        <div class="container">
+            <div class="footer__inner">
+                <div class="footer-block">
+                    <Logo />
+                    <div class="footer__adress">
+                        <h4>Адресс</h4>
+                        <span>Казахстан, г.Алматы</span>
+                        <p>Проспект Райымбека 214/1, головной офис</p>
+                    </div>
+                    <div class="footer__social">
+                        <p>Мы в соц сетях</p>
+                        <div class="footer__social-list">
+                            <VkSvg />
+                            <InstagramSvg />
+                            <FacebookSvg />
+                        </div>
+                    </div>
+                </div>
+                <div class="footer__users">
+                    <h4 class="footer__title">Покупателям</h4>
+                    <div class="footer__users-list">
+                        <NuxtLink to="#">Ингредиенты</NuxtLink>
+                        <NuxtLink to="#">Инвентарь</NuxtLink>
+                        <NuxtLink to="#">Украшения для торта</NuxtLink>
+                        <NuxtLink to="#">Упаковочные материалы</NuxtLink>
+
+                    </div>
+                </div>
+                <div class="footer__contacts">
+                    <h4 class="footer__title">Контакты</h4>
+                    <div class="footer__contacts-block">
+                        <p class="footer__contacts-block-title">Поддержка
+                        </p>
+                        <p>+7 (777) 920 - 91 - 82</p>
+                        <span>Пн - Пт с 9.00 - 18.00</span>
+                    </div>
+                    <div class="footer__contacts-block">
+                        <p class="footer__contacts-block-title">Доставка
+                        </p>
+                        <p>+7 (777) 920 - 91 - 82</p>
+                        <span>каждый день с 9.00 - 18.00</span>
+                    </div>
+                </div>
+                <div class="footer__company">
+                    <h4 class="footer__title">Компания</h4>
+                    <div class="footer__company-list">
+                        <div class="footer__company-block">
+                            <NuxtLink>О нас</NuxtLink>
+                            <NuxtLink>Условия возврата</NuxtLink>
+                            <NuxtLink>Контакты</NuxtLink>
+
+                        </div>
+                        <NuxtLink class="footer__company-block">Доставка и
+                            самовывоз</NuxtLink>
+                        <NuxtLink class="footer__company-block">Оплата
+                        </NuxtLink>
+                        <NuxtLink class="footer__company-block">Возврат
+                        </NuxtLink>
+                        <NuxtLink class="footer__company-block">Частые
+                            вопросы</NuxtLink>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <div class="footer__bottom">
+            <ul class="container">
+                <li>© 2023 ART Food все права защищены</li>
+                <li>
+                    <NuxtLink to="#">Политика конфиденциальности
+                    </NuxtLink>
+                </li>
+                <li>Разработка интернет-магазина - <NuxtLink to="#">
+                        Фабрика проектов</NuxtLink>
+                </li>
+            </ul>
+        </div>
+    </footer>
+</template>
+
+<style lang="scss" scoped>
+.footer {
+    background-color: $main;
+    padding-top: 90px;
+
+    &__inner {
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+
+        @include atXl {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        @include atSm {
+            grid-template-columns: 1fr;
+        }
+    }
+
+    &__title {
+        text-transform: uppercase;
+        font-weight: 700;
+        opacity: 0.5;
+        color: white;
+        font-size: 16px;
+    }
+
+    &__bottom {
+        margin-top: 53px;
+        padding-top: 32px;
+        padding-bottom: 36px;
+        border-top: 1px solid rgba(255, 255, 255, 0.6);
+
+
+
+        ul {
+            display: flex;
+            color: white;
+            list-style-type: none;
+            gap: 125px;
+            font-size: 14px;
+
+            @include atXXl {
+                gap: 30px;
+            }
+
+            @include atXl {
+                flex-direction: column;
+                gap: 14px;
+            }
+
+            a {
+                color: white;
+                text-decoration: none;
+                font-size: 14px;
+            }
+        }
+    }
+
+    &__company {
+        &-list {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 30px;
+
+            a {
+                color: white;
+            }
+        }
+
+        &-block {
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+        }
+    }
+
+    &__contacts {
+        &-block {
+            margin-top: 30px;
+
+            &-title {
+                margin-bottom: 7px;
+            }
+
+            p {
+                color: white;
+            }
+
+            span {
+                font-size: 14px;
+                color: white;
+                opacity: 0.6;
+            }
+        }
+    }
+
+    &__users {
+
+        &-list {
+            margin-top: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 16px;
+
+            a {
+                color: white;
+                text-decoration: none;
+            }
+        }
+    }
+
+    &__social {
+        margin-top: 40px;
+
+        p {
+            color: white;
+        }
+
+        &-list {
+            margin-top: 14px;
+            display: flex;
+            gap: 14px;
+        }
+    }
+
+    &__adress {
+        margin-top: 40px;
+        color: white;
+
+        h4 {
+            margin-bottom: 7px;
+            font-size: 16px;
+        }
+
+        p {
+            font-size: 14px;
+            line-height: 24px;
+            opacity: 0.6;
+        }
+    }
+
+}
+</style>

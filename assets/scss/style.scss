@@ -1,0 +1,45 @@
+@import "./mixins/index";
+@import "./variables/index";
+@import "./fonts";
+@import "./normalize.scss";
+html {
+  scroll-behavior: smooth;
+}
+body {
+  position: relative;
+}
+* {
+  font-family: "Cera Pro", sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-weight: 500;
+}
+.container {
+  max-width: 1440px;
+  padding-right: 26px;
+  padding-left: 26px;
+  width: 100%;
+  margin: 0 auto;
+
+  @include atXXl {
+    max-width: 1200px;
+    padding: 0 26px;
+  }
+
+  @include atXl {
+    max-width: 1012px;
+    padding: 0 25px;
+  }
+  @include atLg {
+    max-width: 880px;
+    padding: 0 20px;
+  }
+  @include atMd {
+    max-width: 578px;
+    padding: 0 20px;
+  }
+  @include atSm {
+    padding: 0 16px;
+  }
+}

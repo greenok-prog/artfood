@@ -1,0 +1,29 @@
+@mixin atXXl {
+  @media (max-width: 1440px) {
+    @content;
+  }
+}
+
+@mixin atXl {
+  @media (max-width: 1199px) {
+    @content;
+  }
+}
+
+@mixin atLg {
+  @media (max-width: 992px) {
+    @content;
+  }
+}
+
+@mixin atMd {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+
+@mixin atSm {
+  @media (max-width: 578px) {
+    @content;
+  }
+}
