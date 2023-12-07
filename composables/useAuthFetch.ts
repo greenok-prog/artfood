@@ -8,13 +8,15 @@ export async function useAuthFetch<
 >(url: string, options: UseApiOptions<T, U, V> = {}) {
   const access = useCookie("access");
   const refreshToken = useCookie("refresh");
+  const router = useRouter();
+  const config = useRuntimeConfig();
   const defaults: UseFetchOptions<T> = {
     headers: { "Content-Type": "application/json" },
     onResponse(_ctx) {},
     async onResponseError({ response }) {
       if (response.status === 401) {
         const res: { access: string } = await $fetch(
-          "https://artfood.dev.thefactory.kz/api/token/refresh/",
+          `${config.public.tokenBase}refresh/`,
           {
             method: "post",
             body: {
@@ -24,6 +26,8 @@ export async function useAuthFetch<
         );
         if (res.access) {
           access.value = res.access;
+        } else {
+          router.push("/auth/login");
         }
       }
     },

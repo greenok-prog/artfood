@@ -70,7 +70,7 @@ const config = useRuntimeConfig()
 const submitHandler = handleSubmit(async () => {
 
     const { data, error, status, execute } = await useFetch<Login>(
-        `https://artfood.dev.thefactory.kz/api/token/`,
+        `${config.public.tokenBase}`,
         {
             method: 'POST',
 
@@ -81,7 +81,7 @@ const submitHandler = handleSubmit(async () => {
             },
         }
     );
-    await execute()
+
 
     if (status.value === 'success') {
         const auth = useCookie('access')
@@ -92,12 +92,13 @@ const submitHandler = handleSubmit(async () => {
         id.value = VueJwtDecode.decode(data.value.access).user_id
         localStorage.setItem('userId', VueJwtDecode.decode(data.value.access).user_id)
         await getUser()
-        return navigateTo('/user')
+        await navigateTo('/user')
     }
     else {
         serverError.value = getErrors(error)[0]
 
     }
+    execute()
 });
 
 </script>

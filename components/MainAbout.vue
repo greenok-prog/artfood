@@ -1,5 +1,5 @@
 <template>
-    <div class="about" v-if="data">
+    <div id="about" class="about" v-if="data">
         <div class="about__left">
             <h2>О компании</h2>
             <!-- <p v-html="data?.results[0].name">
@@ -15,7 +15,7 @@
 import type { ReturnPolicy } from '~/types/api-schema';
 
 const { data } = await useFetch<ReturnPolicy>('/api/about_company')
-console.log(data.value);
+
 
 
 

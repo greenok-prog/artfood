@@ -8,7 +8,7 @@
                 <MenuBtnSvg class="header-top__menu"
                     @click="openNavbar" />
                 <nav>
-                    <NuxtLink to="#">О нас</NuxtLink>
+                    <NuxtLink to="/#about">О нас</NuxtLink>
                     <NuxtLink to="/return-policy">Условия возврата
                     </NuxtLink>
                     <NuxtLink to="/contacts">Контакты</NuxtLink>
@@ -67,7 +67,7 @@ import ModalCatalog from "@/components/catalog/ModalCatalog.vue";
 import HeaderBurgerNavbar from "@/components/HeaderBurgerNavbar.vue";
 import { useFavoriteStore } from "~/store/favorite";
 import { useCartStore } from "~/store/cart";
-import { useAuthStore } from "~/store/auth";
+
 const router = useRouter()
 const search = ref('')
 const onSearch = () => {

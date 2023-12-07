@@ -29,14 +29,15 @@
         </NuxtLink>
         <NuxtLink to="/auth/login" class="mobile-navbar__item">
             <NavbarUserSvg />
-            <span>Вход</span>
+            <span>{{ isLoggedIn ? 'Аккаунт' : 'Вход' }}</span>
         </NuxtLink>
     </div>
 </template>
 <script lang="ts" setup>
+import { useAuthStore } from '~/store/auth';
 import { useCartStore } from '~/store/cart';
 import { useFavoriteStore } from '~/store/favorite';
-
+const { isLoggedIn } = storeToRefs(useAuthStore())
 const { favoriteCount } = storeToRefs(useFavoriteStore())
 const { cartLength } = storeToRefs(useCartStore())
 </script>

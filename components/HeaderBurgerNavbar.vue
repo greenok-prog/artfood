@@ -7,7 +7,7 @@
             <Logo type="dark" />
             <BurgerCloseSvg @click="emit('close')" />
         </div>
-        <div class="burger-navbar-lang">
+        <!-- <div class="burger-navbar-lang">
             <span class="active-lang burger-navbar-lang-item">Ru
             </span>
             <div class="burger-navbar-lang-line"></div>
@@ -16,24 +16,31 @@
         <div class="burger-navbar-city">
             <NavigationSvg />
             Алматы
-        </div>
+        </div> -->
         <div class="burger-navbar__content">
             <div class="burger-navbar__block">
                 <div class="burger-navbar__list">
-                    <NuxtLink to="#">О нас</NuxtLink>
-                    <NuxtLink to="/return-policy">Условия возврата
+                    <NuxtLink @click="closeHandler" to="/#about">О нас
                     </NuxtLink>
-                    <NuxtLink to="/contacts">Контакты</NuxtLink>
+                    <NuxtLink @click="closeHandler" to="/return-policy">
+                        Условия возврата
+                    </NuxtLink>
+                    <NuxtLink @click="closeHandler" to="/contacts">
+                        Контакты</NuxtLink>
 
                 </div>
             </div>
             <div class="burger-navbar__block">
                 <div class="burger-navbar__list">
-                    <NuxtLink to="/delivery-and-pickup">Доставка и
+                    <NuxtLink @click="closeHandler"
+                        to="/delivery-and-pickup">Доставка и
                         самовывоз</NuxtLink>
-                    <NuxtLink to="#">Оплата</NuxtLink>
-                    <NuxtLink to="#">Возврат</NuxtLink>
-                    <NuxtLink to="/faq">Частые вопросы</NuxtLink>
+                    <NuxtLink @click="closeHandler" to="#">Оплата
+                    </NuxtLink>
+                    <NuxtLink @click="closeHandler" to="#">Возврат
+                    </NuxtLink>
+                    <NuxtLink @click="closeHandler" to="/faq">Частые
+                        вопросы</NuxtLink>
                 </div>
             </div>
             <div class="burger-navbar__block">
@@ -81,6 +88,10 @@
 <script lang="ts" setup>
 import { VueFinalModal } from 'vue-final-modal'
 const emit = defineEmits(['close'])
+const closeHandler = () => {
+    emit('close')
+}
+
 </script>
 <style lang="scss">
 .burger-navbar__modal {

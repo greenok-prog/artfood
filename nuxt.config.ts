@@ -65,6 +65,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       apiBase: process.env.NUXT_PUBLIC_API_BASE,
+      tokenBase: process.env.TOKEN_API,
     },
   },
 

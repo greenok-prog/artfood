@@ -112,14 +112,15 @@ const submit = handleSubmit(async () => {
         method: 'post',
         body: fetchData
     })
-    execute()
+
     if (status.value === 'success') {
         store.$reset()
-        return navigateTo('/')
+        await navigateTo('/auth/login')
     } else {
         store.setRegistrationErrors(error)
 
     }
+    execute()
 })
 </script>
 

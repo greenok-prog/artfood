@@ -9,7 +9,7 @@
             </button>
         </div>
         <Swiper :observer="true" :observe-parents="true"
-            :pagination="true"
+            :pagination="{ clickable: true }"
             :modules="[SwiperNavigation, SwiperPagination]"
             :onSwiper="s => swiper = s" :breakpoints="breakpoints"
             :slides-per-view="1.2" :space-between="30">

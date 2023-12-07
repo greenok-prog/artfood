@@ -5,7 +5,7 @@
                 :path="['Главная', 'Политика конфиденциальности данных']" />
             <h2 class="privacy-policy__title">Политика конфиденциальности
                 данных</h2>
-            <p class="privacy-policy__text"
+            <p v-if="data.results.length" class="privacy-policy__text"
                 v-html="data?.results[0].name">
             </p>
         </div>
@@ -15,6 +15,8 @@
 <script lang="ts" setup>
 import type { ReturnPolicy } from '~/types/api-schema';
 const { data } = await useFetch<ReturnPolicy>('/api/privacy-policy')
+
+
 
 
 </script>

@@ -16,12 +16,13 @@ export const useAuthStore = defineStore("auth", {
       const refreshToken = useCookie("refresh");
       const access = useCookie("access");
       let user = {};
+      const config = useRuntimeConfig();
       let isLoggedIn = false;
-      const { data, status } = await useFetch("/api/profile", {
+      const { data, status, execute } = await useFetch("/api/profile", {
         async onResponseError({ response }) {
           if (response.status === 401) {
             const res: { access: string } = await $fetch(
-              "https://artfood.dev.thefactory.kz/api/token/refresh/",
+              `${config.public.tokenBase}/refresh/`,
               {
                 method: "post",
                 body: {
@@ -33,6 +34,8 @@ export const useAuthStore = defineStore("auth", {
               access.value = res.access;
               user = data.value;
               isLoggedIn = true;
+            } else {
+              execute();
             }
           }
         },
@@ -41,6 +44,7 @@ export const useAuthStore = defineStore("auth", {
         this.user = data.value;
         this.isLoggedIn = true;
       }
+      return data.value;
     },
     setRegistration(info: object) {
       this.registrationUser = { ...this.registrationUser, ...info };

@@ -1,11 +1,11 @@
 <template>
     <div class="container">
         <div class="return-policy">
-            <PathHistory
-                :path="['Главная', 'Политика конфиденциальности данных']" />
+            <PathHistory :path="['Главная', 'Условия возврата']" />
             <h2 class="return-policy__title">Условия возврата
-                данных</h2>
-            <p class="return-policy__text" v-html="data?.results[0].name">
+            </h2>
+            <p v-if="data.results.length" class="return-policy__text"
+                v-html="data?.results[0].name">
             </p>
         </div>
     </div>

@@ -2,9 +2,8 @@
     <div class="container">
         <div class="delivery-and-pickup-policy">
             <PathHistory :path="['Главная', 'Доставка и самовывоз']" />
-            <h2 class="delivery-and-pickup-policy__title">Политика
-                конфиденциальности
-                данных</h2>
+            <h2 class="delivery-and-pickup-policy__title">Доставка и
+                самовывоз</h2>
             <p class="delivery-and-pickup-policy__text"></p>
 
 

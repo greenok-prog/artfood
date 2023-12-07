@@ -11,10 +11,16 @@
                     </div>
                     <div class="footer__social">
                         <p>Мы в соц сетях</p>
-                        <div class="footer__social-list">
-                            <VkSvg />
-                            <InstagramSvg />
-                            <FacebookSvg />
+                        <div v-if="social" class="footer__social-list">
+                            <NuxtLink :to="link.url_network"
+                                v-for="link in social?.results"
+                                :key="link.name">
+                                <VkSvg v-if="link.name === 'Vk'" />
+                                <InstagramSvg
+                                    v-if="link.name === 'Instagram'" />
+                                <FacebookSvg
+                                    v-if="link.name === 'Telegram'" />
+                            </NuxtLink>
                         </div>
                     </div>
                 </div>
@@ -28,28 +34,27 @@
 
                     </div>
                 </div>
-                <div class="footer__contacts">
+                <div v-if="addresses?.results" class="footer__contacts">
                     <h4 class="footer__title">Контакты</h4>
                     <div class="footer__contacts-block">
                         <p class="footer__contacts-block-title">Поддержка
                         </p>
-                        <p>+7 (777) 920 - 91 - 82</p>
+                        <NuxtLink :to="`tel:+7 (777) 920 - 91 - 82`">
+                            <p>+7
+                                (777) 920 - 91 - 82</p>
+                        </NuxtLink>
                         <span>Пн - Пт с 9.00 - 18.00</span>
                     </div>
-                    <div class="footer__contacts-block">
-                        <p class="footer__contacts-block-title">Доставка
-                        </p>
-                        <p>+7 (777) 920 - 91 - 82</p>
-                        <span>каждый день с 9.00 - 18.00</span>
-                    </div>
+
                 </div>
                 <div class="footer__company">
                     <h4 class="footer__title">Компания</h4>
                     <div class="footer__company-list">
                         <div class="footer__company-block">
-                            <NuxtLink>О нас</NuxtLink>
-                            <NuxtLink>Условия возврата</NuxtLink>
-                            <NuxtLink>Контакты</NuxtLink>
+                            <NuxtLink to="/#about">О нас</NuxtLink>
+                            <NuxtLink to="/return-policy">Условия возврата
+                            </NuxtLink>
+                            <NuxtLink to="/contacts">Контакты</NuxtLink>
 
                         </div>
                         <NuxtLink class="footer__company-block">Доставка и
@@ -72,14 +77,38 @@
                     <NuxtLink to="#">Политика конфиденциальности
                     </NuxtLink>
                 </li>
-                <li>Разработка интернет-магазина - <NuxtLink to="#">
-                        Фабрика проектов</NuxtLink>
-                </li>
+
             </ul>
         </div>
     </footer>
 </template>
+<script lang="ts" setup>
+interface ISocial {
+    name: string,
+    url_network: string
+}
+interface IAddress {
+    city: {
+        name: string
+    },
+    district: {
+        name: string
+    },
+    contact_store: {
+        phone_number: string
+    }[],
+    house_number: string
+}
+const { data: social } = await useFetch<{ results: ISocial[] }>('/api/store-social', {
+    method: 'get'
+})
+const { data: addresses } = await useFetch<{ results: IAddress[] }>('/api/store-addresses')
 
+
+
+
+
+</script>
 <style lang="scss" scoped>
 .footer {
     background-color: $main;

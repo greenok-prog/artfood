@@ -20,13 +20,9 @@ import { useAuthStore } from '~/store/auth';
 definePageMeta({
     middleware: ['logged-in']
 })
-const { setUser } = useAuthStore()
+const { setUser, getUser } = useAuthStore()
 const { user } = storeToRefs(useAuthStore())
 
-const { data } = await useAuthFetch(`/api/profile`, {
-    method: 'get',
-
-
-})
-setUser(data.value)
+const data = await getUser()
+setUser(data)
 </script>
