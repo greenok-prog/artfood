@@ -24,7 +24,6 @@ const localValue = computed({
 });
 
 const checked = computed(() => {
-
     return localValue.value === props.value;
 });
 </script>
