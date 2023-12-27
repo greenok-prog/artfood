@@ -1,5 +1,5 @@
 <template>
-    <ContentBlockWrap title="Популярные товары"
+    <ContentBlockWrap v-if="data" title="Популярные товары"
         :more-link="`/catalog?ordering=-rating`"
         moreText="Все популярные товары">
         <ProductSlider :products="data?.results" />

@@ -1,5 +1,5 @@
 <template>
-    <div class="blog-block">
+    <div class="blog-block" v-if="data">
         <ContentBlockWrap title="Блог" more-text="Все статьи"
             moreLink="/blog">
             <div class="blog-block__list">

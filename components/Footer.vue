@@ -9,7 +9,7 @@
                         <span>Казахстан, г.Алматы</span>
                         <p>Проспект Райымбека 214/1, головной офис</p>
                     </div>
-                    <div class="footer__social">
+                    <div v-if="social" class="footer__social">
                         <p>Мы в соц сетях</p>
                         <div v-if="social" class="footer__social-list">
                             <NuxtLink :to="link.url_network"

@@ -1,5 +1,5 @@
 <template>
-    <ContentBlockWrap class="new-products" title="Новинки"
+    <ContentBlockWrap v-if="data" class="new-products" title="Новинки"
         moreText="Все новинки"
         :moreLink="`/catalog?ordering=-date_create`">
         <ProductSlider :products="data.results" />

@@ -1,5 +1,5 @@
 <template>
-    <ContentBlockWrap title="Популярные категории">
+    <ContentBlockWrap v-if="data" title="Популярные категории">
         <CategorySlider :categories="data.results" />
     </ContentBlockWrap>
 </template>

@@ -1,13 +1,15 @@
 <template>
     <div class="container">
-        <MainPromo class="promo" :discounts="discounts?.results" />
+        <MainPromo v-if="discounts" class="promo"
+            :discounts="discounts?.results" />
     </div>
     <MainDiscountProducts class="discount" />
     <MainPopularProducts class="popular" />
     <TextLine />
     <MainNewProducts />
     <div class="container">
-        <MainPromo class="slider" :discounts="discounts?.results" />
+        <MainPromo v-if="discounts" class="slider"
+            :discounts="discounts?.results" />
     </div>
     <div class="bg-grey">
         <MainPopularCategories class="categories" />
