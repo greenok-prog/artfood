@@ -1,6 +1,6 @@
 <template>
     <div class="welcome-page">
-        <h1>Добро пожаловать, Мария! </h1>
+        <h1>Добро пожаловать! </h1>
         <p>Это ваш личный кабинет. Здесь Вы можете отслеживать свою
             историю
             покупок, печать счета, изменять свою контактную информацию,
@@ -11,7 +11,7 @@
                 нами.
             </VLink>
         </p>
-        <VBtn>Перейти в кабинет</VBtn>
+        <VBtn @click="goToLoginPage">Войти</VBtn>
     </div>
 </template>
 
@@ -21,6 +21,16 @@ definePageMeta({
     layout: 'auth'
 })
 
+const route = useRoute()
+const { data } = await useFetch('/api/confirm-email', {
+    method: 'get',
+    query: {
+        token: route.query.token
+    }
+})
+const goToLoginPage = () => {
+    return navigateTo('/auth/login')
+}
 </script>
 
 <style lang="scss" scoped>
