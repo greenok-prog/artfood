@@ -6,8 +6,7 @@
             <span class="blog-card__publish">{{ createdDate }}</span>
             <h4 class="blog-card__title">{{ data.theme }}
             </h4>
-            <p>A tincidunt vivamus etiam nulla commodo. Nibh varius felis
-                turpis euismod viverra adipiscing.</p>
+            <p>{{ data.text }}</p>
             <div class="blog-card__actions">
                 <NuxtLink :to="`/blog/${data.id}`">Читать</NuxtLink>
                 <NuxtLink :to="`/blog/${data.id}`" class="blog-card__btn">
@@ -85,6 +84,12 @@ const createdDate = computed(() => {
     p {
         margin-top: 10px;
         font-weight: 400;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        /* number of lines to show */
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
 
         @include atMd {
             font-size: 14px;

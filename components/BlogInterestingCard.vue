@@ -1,20 +1,27 @@
 <template>
     <div class="blog-card">
         <div class="blog-card__content">
-            <img src="/blog-item-img.png" alt="">
+            <img v-if="blog.images" :src="blog.images[0].image" alt="">
             <div class="blog-card__info">
-                <span class="blog-card__date">02.10.2023</span>
-                <p class="blog-card__title">Какие виды инструментов
-                    существуют?</p>
-                <p class="blog-card__description">A tincidunt vivamus
-                    etiam nulla commodo. Nibh varius felis turpis euismod
-                    viverra adipiscing.</p>
+                <span class="blog-card__date">
+                    {{ formatDate(blog.date_created) }}
+                </span>
+                <p class="blog-card__title">{{ blog.theme }}</p>
+                <p class="blog-card__description">{{ blog.text }}</p>
             </div>
         </div>
-        <NuxtLink class="blog-card__more" to="/blog/1">Читать</NuxtLink>
+        <NuxtLink class="blog-card__more" :to="`/blog/${blog.id}`">Читать
+        </NuxtLink>
     </div>
 </template>
+<script lang="ts" setup>
+import type { Blog } from '~/types/api-schema';
 
+const props = defineProps<{
+    blog: Blog
+}>()
+
+</script>
 <style lang="scss" scoped>
 .blog-card {
     padding: 15px;

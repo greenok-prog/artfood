@@ -74,7 +74,8 @@
             <ul class="container">
                 <li>© 2023 ART Food все права защищены</li>
                 <li>
-                    <NuxtLink to="#">Политика конфиденциальности
+                    <NuxtLink to="/privacy-policy">Политика
+                        конфиденциальности
                     </NuxtLink>
                 </li>
 

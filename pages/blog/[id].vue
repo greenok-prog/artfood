@@ -1,21 +1,24 @@
 <template>
     <div class="blog-item">
         <div class="container">
-            <PathHistory :path="['Главная', data?.theme]" />
+            <PathHistory v-if="data" :path="['Главная', data?.theme]" />
             <PreviousPageLink class="blog-item__back" to="/blog" />
-            <BlogInfoBlock :blog="data" class="blog-item__info" />
+            <BlogInfoBlock v-if="data" :blog="data"
+                class="blog-item__info" />
             <div class="blog-item__content">
 
-                <BlogContent :blog="data"
+                <BlogContent v-if="data" :blog="data"
                     class="blog-item__content-content" />
-                <BlogInteresting class="blog-item__content-right" />
+                <BlogInteresting v-if="interestingBlog.length"
+                    :blogs="interestingBlog"
+                    class="blog-item__content-right" />
             </div>
 
         </div>
-        <ContentBlockWrap class="blog-item__bottom"
+        <!-- <ContentBlockWrap v-if="data" class="blog-item__bottom"
             title="Вы недавно читали" :title-size="28">
             <BlogSlider />
-        </ContentBlockWrap>
+        </ContentBlockWrap> -->
     </div>
     <ModalsContainer />
 </template>
@@ -25,6 +28,13 @@ import type { Blog } from '~/types/api-schema';
 const router = useRoute()
 const { data } = useFetch<Blog>(`/api/blog/${router.params.id}`)
 
+
+const { data: blogs } = await useFetch<Blog[]>('/api/blog-list')
+console.log(blogs.value);
+
+const interestingBlog = computed(() => {
+    return blogs.value?.results.filter(el => String(el.id) !== router.params.id)
+})
 
 </script>
 <style lang="scss" scoped>

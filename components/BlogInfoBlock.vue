@@ -6,21 +6,14 @@
         <div class="blog-info__content">
             <div class="blog-info__content-info">
                 <span class="blog-info__date">{{ date }}</span>
-                <div class="blog-info__right">
-                    <span class="blog-info__watchs">
-                        <WatchSvg /> 172
-                    </span>
-                    <div class="blog-info__likes">
-                        <BlogLikeSvg />47
-                    </div>
-                </div>
+
             </div>
-            <div class="blog-info__content-share">
+            <!-- <div class="blog-info__content-share">
                 Поделиться статьей: <span>
                     <ShareTgSvg />
                     <ShareWsSvg />
                 </span>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

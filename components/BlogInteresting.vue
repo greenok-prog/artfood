@@ -2,14 +2,20 @@
     <div class="blog-interesting">
         <h4 class="blog-interesting__title">Интересное для вас</h4>
         <div class="blog-interesting__list">
-            <BlogInterestingCard />
-            <BlogInterestingCard />
-            <BlogInterestingCard />
-            <BlogInterestingCard />
+            <BlogInterestingCard v-for="blog in blogs" :key="blog.id"
+                :blog="blog" />
+
         </div>
     </div>
 </template>
+<script lang="ts" setup>
+import type { Blog } from '~/types/api-schema';
 
+const props = defineProps<{
+    blogs: Blog[]
+}>()
+
+</script>
 <style lang="scss" scoped>
 .blog-interesting {
 

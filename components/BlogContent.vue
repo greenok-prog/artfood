@@ -16,21 +16,17 @@
                 <ProfileNavbarIconSvg />
                 Назад
             </NuxtLink>
-            <span class="blog-content__like">
-                <button>
-                    <BlogLikeSvg />
-                </button> 47
-            </span>
+
             <button class="blog-content__share-mini" @click="open">
                 <ShareSvg />
             </button>
-            <div class="blog-content__share">
+            <!-- <div class="blog-content__share">
                 Поделиться статьей:
                 <span>
                     <ShareTgSvg />
                     <ShareWsSvg />
                 </span>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>

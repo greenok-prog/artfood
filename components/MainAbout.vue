@@ -2,9 +2,9 @@
     <div id="about" class="about" v-if="data">
         <div class="about__left">
             <h2>О компании</h2>
-            <!-- <p v-html="data?.results[0].name">
+            <p v-html="data?.results[0].name">
 
-            </p> -->
+            </p>
         </div>
         <div class="about__right">
             <img src="/about-creative.png" alt="">

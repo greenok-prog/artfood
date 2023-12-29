@@ -4,9 +4,9 @@
             <PathHistory :path="['Главная', 'Блог']" />
             <h2 class="blog__title">Блог</h2>
             <BlogList :list="data.results" class="blog__list" />
-            <div class="blog__more">
+            <!-- <div class="blog__more">
                 <VBtn class="blog__more-button">Еще статьи</VBtn>
-            </div>
+            </div> -->
         </div>
     </div>
 </template>
