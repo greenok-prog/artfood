@@ -17,8 +17,10 @@
                 <ProfileNavbarIconSvg />
             </NuxtLink>
         </nav>
-        <div class="profile-navbar__logout">
-            <NuxtLink to="/">Выход из профиля</NuxtLink>
+        <div class="profile-navbar__logout"
+            @click="useAuthStore().logout">
+            <NuxtLink to="/">Выход из
+                профиля</NuxtLink>
         </div>
     </div>
 </template>

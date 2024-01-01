@@ -14,7 +14,7 @@ export async function useAuthFetch<
     headers: { "Content-Type": "application/json" },
     onResponse(_ctx) {},
     async onResponseError({ response }) {
-      if (response.status === 401) {
+      if (response.status === 401 && refreshToken.value) {
         const res: { access: string } = await $fetch(
           `${config.public.tokenBase}refresh/`,
           {

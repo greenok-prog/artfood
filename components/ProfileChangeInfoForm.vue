@@ -78,10 +78,11 @@ const submitHandler = handleSubmit(async () => {
             phone_number: user.value.phone_number,
         },
     })
-    execute()
+
     if (status.value === 'success') {
-        return
+        useRouter().push('/user')
     } else {
+        execute()
         setErrors(formatErrors(error, 'user'))
     }
 })

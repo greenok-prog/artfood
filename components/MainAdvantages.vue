@@ -6,25 +6,29 @@
                     <CakeSvg />
                     <h4 class="advantages__title">Разнообразие товаров
                     </h4>
-                    <p>Imperdiet elementum proin fermentum in.</p>
+                    <p>Широкий ассортимент сырья и компонентов для
+                        кондитерских производств</p>
                 </div>
                 <div class="advantages__list-item">
                     <UserStarsSvg />
-                    <h4 class="advantages__title">Разнообразие товаров
+                    <h4 class="advantages__title">6092 покупателей
                     </h4>
-                    <p>Imperdiet elementum proin fermentum in.</p>
+                    <p> Наши клиенты доверяют нам благодаря качественным
+                        продуктам, надежным поставкам, профессионализму и
+                        индивидуальному подходу к каждому заказчику.</p>
+
                 </div>
                 <div class="advantages__list-item">
                     <LikeSvg />
-                    <h4 class="advantages__title">Разнообразие товаров
+                    <h4 class="advantages__title">Доверие потребителей
                     </h4>
-                    <p>Imperdiet elementum proin fermentum in.</p>
+
                 </div>
                 <div class="advantages__list-item">
                     <EcoSvg />
                     <h4 class="advantages__title">Экологичные товары
                     </h4>
-                    <p>Imperdiet elementum proin fermentum in.</p>
+
                 </div>
             </div>
         </div>

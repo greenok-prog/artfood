@@ -70,14 +70,18 @@ const { handleSubmit, setErrors, errors } = useForm({
 })
 const { value: addresses } = useField('addresses')
 const submitHandler = async (item) => {
-    const fetchBody = { ...item, city: item.city.id, district: item.district.id }
+    const fetchBody = { ...item, city: item.city.id, }
     console.log(item);
 
 
-    const { } = await useFetch(`/api/change-address/${item.id}`, {
+    const { status } = await useFetch(`/api/change-address/${item.id}`, {
         method: 'PUT',
         body: fetchBody
     })
+
+    if (status.value === 'success') {
+        useRouter().push('/user')
+    }
 
 }
 </script>

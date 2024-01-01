@@ -83,7 +83,10 @@ interface CompanyInfo {
     house_number: string,
     office_number: string,
     street: string,
-    city: number | null
+    city: {
+        name: string,
+        id: number
+    }
 
 }
 const schema = object({
@@ -95,7 +98,9 @@ const schema = object({
         bik: string().required('Обязательное поле'),
         office_number: string().required('Обязательное поле'),
         street: string().required('Обязательное поле'),
-        city: string().required('Обязательное поле'),
+        city: object({
+            name: string().required('Обязательное поле')
+        }),
 
     })
 })
@@ -129,11 +134,12 @@ const submitHandler = handleSubmit(() => {
             street: company.value.street,
             house_number: company.value.house_number,
             office_number: company.value.office_number,
-            city: company.value.city.id,
+            city: company.value.city?.id,
 
         }
 
     })
+    emit('goToNext')
 
 })
 

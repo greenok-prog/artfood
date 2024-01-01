@@ -3,7 +3,7 @@
         <div class="history-item__header">
             <div class="history-item__header-left">
                 <p>Общая сумма заказа: {{ totalPrice }} ₸</p>
-                <VLink to="#">Повторить заказ</VLink>
+                <!-- <VLink to="#">Повторить заказ</VLink> -->
             </div>
             <div class="history-item__header-right">
                 <div class="history-item__header-info">

@@ -1,7 +1,7 @@
 <template>
     <div class="base-dropdown">
         <div class="base-dropdown__value"
-            :class="{ 'base-dropdown__value_active': isOpened }"
+            :class="{ 'base-dropdown__value_active': isOpened, 'base-dropdown__value_error': errorMessage }"
             @click="clickHandler">
             <span v-if="!modelValue.name && placeholder"
                 class="base-dropdown__placeholder">{{ placeholder
@@ -15,13 +15,16 @@
 
         </div>
     </div>
+    <span v-if="errorMessage" class="base-dropdown__error">{{ errorMessage
+    }}</span>
 </template>
 <script lang="ts" setup>
 
 const props = defineProps<{
     options: any,
     modelValue: any,
-    placeholder?: string
+    placeholder?: string,
+    errorMessage?: string
 }>()
 const emit = defineEmits(['update:modelValue'])
 const isOpened = ref(false)
@@ -50,6 +53,13 @@ const onSelect = (v: any) => {
 
     }
 
+    &__error {
+        text-align: left;
+        width: 100%;
+        color: red;
+        font-size: 13px;
+    }
+
     // .base-dropdown__value
 
     &__value {
@@ -69,6 +79,10 @@ const onSelect = (v: any) => {
             svg {
                 transform: rotate(180deg);
             }
+        }
+
+        &_error {
+            border: 1px solid $warning;
         }
 
         &:focus {

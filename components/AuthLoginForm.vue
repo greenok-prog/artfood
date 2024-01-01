@@ -95,10 +95,12 @@ const submitHandler = handleSubmit(async () => {
         await navigateTo('/user')
     }
     else {
+
         serverError.value = getErrors(error)[0]
+        execute()
 
     }
-    execute()
+
 });
 
 </script>

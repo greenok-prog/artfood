@@ -88,7 +88,7 @@ const { handleSubmit, setErrors } = useForm({
     },
 });
 
-const { value: user } = useField<any>("user");
+const { value: user } = useField<User>("user");
 
 const submitHandler = handleSubmit(() => {
     setRegistration({ ...user.value, password_repeat: user.value.password })

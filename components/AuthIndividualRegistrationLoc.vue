@@ -1,37 +1,51 @@
 <template>
     <div class="registration-loc">
 
-        <FormError v-if="errors.addresses" class="registration-loc__error"
-            :error-message="errors.addresses" />
         <div class="registration-loc__top">
             <p>{{ Number(route.query.step) + 1 }}. Адрес</p>
-            <span>Указать на карте</span>
+
         </div>
-        <div v-for="(address, index) in addresses" :key="index"
-            class="registration-loc__form">
-            <VeeField class="registration-loc__form-city"
-                v-slot="{ errorMessage }" name="address.city">
-                <BaseDropdown :options="cities" v-model="address.city" />
-                <p>{{ errorMessage }}</p>
-            </VeeField>
-            <VeeField name="address.street">
-                <BaseInput v-model="address.street"
-                    placeholder="Например: улица Абая 149/1 *" />
-            </VeeField>
-            <div class="registration-loc__group">
-                <VeeField name="address.apartment_number">
-                    <BaseInput v-model="address.apartment_number"
-                        placeholder="Квартира *" />
+        <FormError v-if="serverError" class="registration-loc__error"
+            :error-message="serverError" />
+        <VeeFieldArray name="addresses" v-slot="{ fields, push, remove }">
+            <div v-for="(address, index) in fields" :key="address.key"
+                class="registration-loc__form">
+                <ModalCloseSvg @click="remove(index)"
+                    class="registration-loc__remove" />
+                <VeeField class="registration-loc__form-city"
+                    :name="`addresses[${index}].city`"
+                    v-slot="{ errorMessage }">
+                    <BaseDropdown placeholder="Город *" :options="cities"
+                        v-model="address.value.city"
+                        :error-message="errorMessage" />
+
+
                 </VeeField>
-                <VeeField name="address.floor">
-                    <BaseInput v-model="address.floor"
-                        placeholder="Этаж" />
+                <VeeField :name="`addresses[${index}].street`"
+                    v-slot="{ errorMessage }">
+                    <BaseInput :error-message="errorMessage"
+                        v-model="address.value.street"
+                        placeholder="Например: улица Абая 149/1 *" />
                 </VeeField>
+                <div class="registration-loc__group">
+                    <VeeField
+                        :name="`addresses[${index}].apartment_number`"
+                        v-slot="{ errorMessage }">
+                        <BaseInput :error-message="errorMessage"
+                            v-model="address.value.apartment_number"
+                            placeholder="Квартира *" />
+                    </VeeField>
+                    <VeeField name="address.floor">
+                        <BaseInput v-model="address.floor"
+                            placeholder="Этаж" />
+                    </VeeField>
+                </div>
             </div>
-        </div>
-        <span class="registration-loc__add" @click="addAddress">
-            <AddSvg /> Добавить еще адрес
-        </span>
+            <span class="registration-loc__add" @click="push(newAddress)">
+                <AddSvg /> Добавить еще адрес
+            </span>
+        </VeeFieldArray>
+
         <VeeField name="agree">
             <VCheckbox v-model="agree" class="registration-loc__agree">
                 Я прочитал (а) <VLink to="#" type="underline">условия
@@ -58,81 +72,108 @@ import type { Address } from '~/types/api-schema';
 const store = useAuthStore()
 const { cities } = storeToRefs(useAddress())
 const emit = defineEmits(['goBack'])
+const route = useRoute()
 const schema = object({
     addresses: array().of(object({
         city: object({
-            name: string().required("Заполните необходимые данные")
-        })
+            name: string().required("Обязательное поле")
+        }),
+        apartment_number: string().required("Обязательное поле"),
+        street: string().required("Обязательное поле")
     }))
 })
-const route = useRoute()
 const { handleSubmit, errors } = useForm({
     validationSchema: schema,
     initialValues: {
         addresses: [
             {
                 city: {},
+                floor: null,
+                street: '',
+                house_number: '',
+                apartment_number: null,
 
             }
         ],
         agree: false
     }
 })
-
-
-const { value: addresses } = useField<Address[]>('addresses')
-const { value: agree } = useField<boolean>('agree')
-const id = ref(1)
-const addAddress = () => {
-    const newAddress: Address = {
-        city: '',
-        floor: null,
-        street: '',
-        district: 1,
-        house_number: '',
-        apartment_number: null,
-
-
-    }
-    addresses.value.push(newAddress)
+const newAddress: Address = {
+    city: {},
+    floor: null,
+    street: '',
+    house_number: '',
+    apartment_number: null,
 
 }
+const serverError = ref('')
+const { value: addresses } = useField<Address[]>('addresses')
+const { value: agree } = useField<boolean>('agree')
+
 const navigateToBack = () => {
     return navigateTo('/auth/registration/individual?step=1')
 }
 const submit = handleSubmit(async () => {
+
     const fetchData = {
         ...store.registrationUser,
         addresses: addresses.value.map(el => {
             return { ...el, city: el.city.id }
         }),
-
+        contact_person: {
+            surname: store.registrationUser.username,
+            first_name: store.registrationUser.second_name,
+            second_name: store.registrationUser.second_name
+        }
     }
     const { status, error, execute } = await useFetch('/api/registration-individual', {
         method: 'post',
         body: fetchData
     })
-    execute()
-    if (status.value === 'success') {
-        store.$reset()
-        await navigateTo('/auth/login')
+    store.setRegistrationErrors(null)
 
+    if (status.value === 'success') {
+        useRouter().push('/auth/registration/welcome')
     } else {
-        store.setRegistrationErrors(error)
+        execute()
+        serverError.value = 'Ошибка при регистрации'
+        store.setRegistrationErrors(error.value)
+        console.log(error.value?.data);
+
+
+
 
     }
+
 
 })
 </script>
 
 <style lang="scss" scoped>
 .registration-loc {
-
-    // .registration-loc__top
     &__error {
         margin-top: 10px;
         text-align: center;
     }
+
+    &__city_error {
+        color: $warning;
+        font-size: 13px;
+    }
+
+    &__remove {
+        float: right;
+        cursor: pointer;
+        position: absolute;
+        right: 14px;
+        top: -25px;
+
+        :deep(path) {
+            fill: rgba(0, 0, 0, 0.471) !important;
+        }
+    }
+
+    // .registration-loc__top
 
     &__top {
         display: flex;
@@ -158,13 +199,17 @@ const submit = handleSubmit(async () => {
         gap: 10px;
         margin-top: 20px;
         color: $additional;
+        cursor: pointer;
     }
 
     &__form {
-        margin-top: 10px;
+        margin-top: 40px;
         display: flex;
         flex-direction: column;
         gap: 10px;
+        position: relative;
+
+
 
     }
 
@@ -172,7 +217,7 @@ const submit = handleSubmit(async () => {
 
     &__group {
         display: flex;
-        align-items: center;
+        align-items: flex-start;
         gap: 10px;
     }
 

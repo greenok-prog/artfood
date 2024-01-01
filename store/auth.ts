@@ -20,9 +20,9 @@ export const useAuthStore = defineStore("auth", {
       let isLoggedIn = false;
       const { data, status, execute } = await useFetch("/api/profile", {
         async onResponseError({ response }) {
-          if (response.status === 401) {
+          if (response.status === 401 && refreshToken.value) {
             const res: { access: string } = await $fetch(
-              `${config.public.tokenBase}/refresh/`,
+              `${config.public.tokenBase}refresh/`,
               {
                 method: "post",
                 body: {

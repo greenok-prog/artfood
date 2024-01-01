@@ -5,9 +5,11 @@
                 <div class="footer-block">
                     <Logo />
                     <div class="footer__adress">
-                        <h4>Адресс</h4>
-                        <span>Казахстан, г.Алматы</span>
-                        <p>Проспект Райымбека 214/1, головной офис</p>
+                        <h4>Адрес</h4>
+                        <span>Казахстан, г.{{ address.city.name }}</span>
+                        <p>ул. {{ address.street }} {{
+                            address.house_number
+                        }}</p>
                     </div>
                     <div v-if="social" class="footer__social">
                         <p>Мы в соц сетях</p>
@@ -40,8 +42,9 @@
                         <p class="footer__contacts-block-title">Поддержка
                         </p>
                         <NuxtLink :to="`tel:+7 (777) 920 - 91 - 82`">
-                            <p>+7
-                                (777) 920 - 91 - 82</p>
+                            <p>{{ address.contact_store[0].phone_numbers
+                            }}
+                            </p>
                         </NuxtLink>
                         <span>Пн - Пт с 9.00 - 18.00</span>
                     </div>
@@ -104,6 +107,11 @@ const { data: social } = await useFetch<{ results: ISocial[] }>('/api/store-soci
     method: 'get'
 })
 const { data: addresses } = await useFetch<{ results: IAddress[] }>('/api/store-addresses')
+const address = computed(() => {
+    return addresses.value.results[0]
+})
+console.log(addresses.value);
+
 
 
 
