@@ -45,7 +45,10 @@
             </div>
         </div>
         <div class="contacts__map">
-
+            <iframe
+                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2553.237476900598!2d76.85415352162939!3d43.25810096787454!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38836989a6ded4b3%3A0xe7d1d3f858b39aa9!2z0JjQnyBBUlQgRk9PRA!5e0!3m2!1sru!2skz!4v1704364906130!5m2!1sru!2skz"
+                style="border:0;" allowfullscreen="" loading="lazy"
+                referrerpolicy="no-referrer-when-downgrade"></iframe>
         </div>
     </div>
 </template>
@@ -53,6 +56,10 @@
 const props = defineProps<{
     title?: string
 }>()
+const { data } = await useFetch('/api/store-addresses')
+console.log(data.value);
+
+
 </script>
 <style lang="scss" scoped>
 .contacts {
@@ -147,6 +154,11 @@ const props = defineProps<{
         flex-grow: 1;
         max-width: 900px;
 
+        iframe {
+            width: 100%;
+            height: 100%;
+        }
+
         @include atMd {
             width: 100%;
             height: 420px;
@@ -154,4 +166,5 @@ const props = defineProps<{
 
 
     }
-}</style>
+}
+</style>

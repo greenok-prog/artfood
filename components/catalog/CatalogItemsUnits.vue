@@ -4,7 +4,7 @@
       <div class="catalog-items__title">
         <h3 class="catalog-items__title-main">{{ activeCatalog.name }}
         </h3>
-        <p class="catalog-items__title-grey">2938 товаров</p>
+        <!-- <p class="catalog-items__title-grey">2938 товаров</p> -->
       </div>
       <div class="catalog-items__list">
         <div v-for="(el, index) in activeCatalog.categories"
@@ -19,11 +19,9 @@
       </div>
     </div>
     <div>
-      <CatalogBrands />
-      <CatalogBrands />
-      <CatalogBrands />
-      <CatalogBrands />
-      <CatalogBrands />
+      <CatalogBrands
+        v-for="item in activeCatalog.categories.slice(0, 4)"
+        :item="item" :key="item.id" />
     </div>
   </div>
 </template>

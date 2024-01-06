@@ -19,8 +19,9 @@
 const props = defineProps<{
     items: string[],
 }>()
-const emit = defineEmits(['removeItem', 'clear'])
+const emit = defineEmits(['removeItem', 'clear', 'onSelect'])
 const selectSearchValue = (v: string) => {
+    emit('onSelect')
     return navigateTo(`/catalog?search=${v}`)
 }
 

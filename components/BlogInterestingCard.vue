@@ -85,6 +85,12 @@ const props = defineProps<{
     &__description {
         color: $neutral;
         font-weight: 400;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        /* number of lines to show */
+        line-clamp: 3;
+        -webkit-box-orient: vertical;
     }
 
     // .blog-card__more

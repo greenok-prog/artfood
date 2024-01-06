@@ -71,6 +71,7 @@ import { useCartStore } from "~/store/cart";
 const router = useRouter()
 const search = ref('')
 const onSearch = () => {
+    search.value = ''
     router.push(`/catalog?search=${search.value}`)
 }
 const { open, close } = useModal({

@@ -5,9 +5,9 @@
                 :path="['Главная', 'Политика конфиденциальности данных']" />
             <h2 class="privacy-policy__title">Политика конфиденциальности
                 данных</h2>
-            <p v-if="data.results.length" class="privacy-policy__text"
+            <div v-if="data.results.length" class="privacy-policy__text"
                 v-html="data?.results[0].name">
-            </p>
+            </div>
         </div>
     </div>
 </template>

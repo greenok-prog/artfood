@@ -90,6 +90,7 @@ const { handleSubmit, setErrors } = useForm({
         }
     }
 })
+const router = useRouter()
 const { value: companyAddress } = useField<AddressBody>('address')
 const submitHandler = handleSubmit(async () => {
     const { status, error, execute } = await useFetch(`/api/company-address/${props.user.company_address.id}`, {
@@ -102,11 +103,12 @@ const submitHandler = handleSubmit(async () => {
         },
         method: 'put'
     })
-    execute()
+
     if (status.value === 'success') {
-        return
+        router.push('/user')
     } else {
         setErrors(formatErrors(error, 'address'))
+        execute()
 
     }
 })

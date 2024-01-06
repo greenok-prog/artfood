@@ -126,21 +126,20 @@ const submit = handleSubmit(async () => {
             second_name: store.registrationUser.second_name
         }
     }
-    const { status, error, execute } = await useFetch('/api/registration-company', {
-        method: 'post',
-        body: fetchData
-    })
     store.setRegistrationErrors(null)
-    if (status.value === 'success') {
-        useRouter().push('/auth/registration/welcome')
-    } else {
+    try {
+        const res = await $fetch('/api/registration-company', {
+            method: 'post',
+            body: fetchData
+        })
+
+
+        await useRouter().push('/auth/registration/message')
+    } catch (e) {
         serverError.value = 'Ошибка при регистрации'
-        store.setRegistrationErrors(error.value)
-        execute()
+        console.log(e.data.data);
 
-
-
-
+        store.setRegistrationErrors(e.data.data)
     }
 
 })

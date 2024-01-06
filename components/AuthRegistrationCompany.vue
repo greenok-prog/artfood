@@ -71,6 +71,7 @@
 import { object, string } from 'yup';
 import { useAddress } from '~/store/address';
 import { useAuthStore } from '~/store/auth';
+import { formatFetchErrors } from '~/utils/validation';
 const { cities } = storeToRefs(useAddress())
 const { setRegistration } = useAuthStore()
 
@@ -148,7 +149,7 @@ const navigateToRegistration = () => {
 }
 watchEffect(() => {
     if (registrationErrors.value) {
-        setErrors(formatErrors(registrationErrors, 'company'));
+        setErrors(formatFetchErrors(registrationErrors.value, 'company'));
     }
 })
 </script>

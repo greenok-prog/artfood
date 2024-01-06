@@ -11,8 +11,10 @@
             </button>
         </div>
         <SearchHistory v-if="history && historyIsOpened && history.length"
-            :items="history.slice(0, 4)" @removeItem="removeHistoryItem"
-            @clear="clearHistory" class="search-input__history" />
+            :items="history.slice(0, 4)"
+            @onSelect="historyIsOpened = false"
+            @removeItem="removeHistoryItem" @clear="clearHistory"
+            class="search-input__history" />
     </div>
 </template>
 <script lang="ts" setup>

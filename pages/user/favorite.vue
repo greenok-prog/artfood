@@ -22,9 +22,7 @@
 <script lang="ts" setup>
 import { useFavoriteStore } from '~/store/favorite';
 import { useProducts } from '~/store/products';
-definePageMeta({
-    middleware: ['logged-in']
-})
+
 const favorite = useFavoriteStore()
 const { getLocalViewed } = useProducts()
 const { getViewed } = storeToRefs(useProducts())

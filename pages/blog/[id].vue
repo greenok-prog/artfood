@@ -33,7 +33,7 @@ const { data: blogs } = await useFetch<Blog[]>('/api/blog-list')
 console.log(blogs.value);
 
 const interestingBlog = computed(() => {
-    return blogs.value?.results.filter(el => String(el.id) !== router.params.id)
+    return blogs.value?.results.filter(el => String(el.id) !== router.params.id).slice(0, 4)
 })
 
 </script>
@@ -64,8 +64,11 @@ const interestingBlog = computed(() => {
         gap: 63px;
 
         &-right {
+            max-width: 450px;
+
             @include atXl {
                 min-width: 300px;
+                max-width: 320px;
             }
 
             @include atLg {

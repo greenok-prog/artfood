@@ -1,5 +1,5 @@
 <template>
-    <ContentBlockWrap v-if="news" title="Акционные товары"
+    <ContentBlockWrap v-if="news?.results.length" title="Акционные товары"
         moreText="Все акционные товары"
         :more-link="`/catalog?ordering=-discount_price`">
         <ProductSlider :products="news.results" />

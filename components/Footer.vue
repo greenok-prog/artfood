@@ -110,7 +110,7 @@ const { data: addresses } = await useFetch<{ results: IAddress[] }>('/api/store-
 const address = computed(() => {
     return addresses.value.results[0]
 })
-console.log(addresses.value);
+
 
 
 

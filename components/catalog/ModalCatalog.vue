@@ -26,6 +26,7 @@ const emit = defineEmits(['confirm'])
   flex-direction: column;
   padding: 1rem;
   border-radius: 14px;
+
 }
 
 .confirm-modal-content>*+* {
@@ -45,5 +46,6 @@ const emit = defineEmits(['confirm'])
 
 .dark .confirm-modal-content {
   background: #000;
+
 }
 </style>

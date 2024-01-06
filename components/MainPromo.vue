@@ -1,7 +1,8 @@
 <template>
-    <div class="promo">
+    <div class="promo" v-if="discounts?.length">
         <Swiper :slidesPerView="1" :spaceBetween="30" :loop="true"
-            :modules="[SwiperPagination]" :pagination="{ clickable: true }">
+            :modules="[SwiperPagination]"
+            :pagination="{ clickable: true }">
             <SwiperSlide v-for="discount in discounts">
                 <div class="promo-info">
                     <ProductBadge type="discount"

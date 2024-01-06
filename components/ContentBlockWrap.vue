@@ -61,9 +61,9 @@ const navigateToMorePage = () => navigateTo(props.moreLink)
         }
 
         .container {
-            @include atSm {
-                padding-right: 0px;
-            }
+            // @include atSm {
+            //     padding-right: 0px;
+            // }
         }
 
 

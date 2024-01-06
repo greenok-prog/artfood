@@ -1,18 +1,20 @@
 <template>
     <div class="blog-card">
-        <img v-if="data.images[0]" :src="data.images[0].image" alt=""
-            class="blog-card__image">
+
         <div class="blog-card__content">
+            <img v-if="data.images[0]" :src="data.images[0].image" alt=""
+                class="blog-card__image">
             <span class="blog-card__publish">{{ createdDate }}</span>
             <h4 class="blog-card__title">{{ data.theme }}
             </h4>
             <p>{{ data.text }}</p>
-            <div class="blog-card__actions">
-                <NuxtLink :to="`/blog/${data.id}`">Читать</NuxtLink>
-                <NuxtLink :to="`/blog/${data.id}`" class="blog-card__btn">
-                    <SliderArrowSvg />
-                </NuxtLink>
-            </div>
+
+        </div>
+        <div class="blog-card__actions">
+            <NuxtLink :to="`/blog/${data.id}`">Читать</NuxtLink>
+            <NuxtLink :to="`/blog/${data.id}`" class="blog-card__btn">
+                <SliderArrowSvg />
+            </NuxtLink>
         </div>
     </div>
 </template>
@@ -35,6 +37,10 @@ const createdDate = computed(() => {
     padding: 15px;
     border-radius: 24px;
     border: 1px solid #C4C6C2;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
 
     @include atMd {
         padding: 0;
@@ -73,6 +79,12 @@ const createdDate = computed(() => {
         line-height: 145%;
         margin-top: 10px;
         font-size: 16px;
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        /* number of lines to show */
+        line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
 
         @include atMd {
             font-size: 14px;

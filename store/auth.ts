@@ -10,6 +10,7 @@ export const useAuthStore = defineStore("auth", {
   actions: {
     setUser(user) {
       this.user = user;
+      this.isLoggedIn = true;
     },
 
     async getUser() {
@@ -40,10 +41,12 @@ export const useAuthStore = defineStore("auth", {
           }
         },
       });
-      if (status.value === "success") {
+
+      if (data.value) {
         this.user = data.value;
         this.isLoggedIn = true;
       }
+
       return data.value;
     },
     setRegistration(info: object) {

@@ -46,6 +46,7 @@ onMounted(async () => {
   display: flex;
   justify-content: space-between;
   color: #2c2c2c;
+  min-height: 70vh;
 
   &-categories {
     background: #f9f9f9;

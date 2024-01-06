@@ -15,13 +15,29 @@ export const getErrors = (error: any) => {
 };
 
 export const formatErrors = (errors: any, prefix?: string) => {
-  const errorList = errors.value.data.data;
+  const errorList = errors?.value?.data?.data;
   const res = {};
-  for (let key in errorList) {
-    if (prefix) {
-      res[`${prefix}.${key}`] = errorList[key][0];
-    } else {
-      res[`${key}`] = errorList[key][0];
+  if (errorList) {
+    for (let key in errorList) {
+      if (prefix) {
+        res[`${prefix}.${key}`] = errorList[key][0];
+      } else {
+        res[`${key}`] = errorList[key][0];
+      }
+    }
+  }
+  return res;
+};
+export const formatFetchErrors = (errors: any, prefix?: string) => {
+  const errorList = errors;
+  const res = {};
+  if (errorList) {
+    for (let key in errorList) {
+      if (prefix) {
+        res[`${prefix}.${key}`] = errorList[key][0];
+      } else {
+        res[`${key}`] = errorList[key][0];
+      }
     }
   }
   return res;

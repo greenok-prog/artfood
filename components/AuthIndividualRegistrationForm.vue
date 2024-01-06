@@ -48,6 +48,7 @@
 <script lang="ts" setup>
 import { object, string } from 'yup';
 import { useAuthStore } from '~/store/auth';
+import { formatFetchErrors } from '~/utils/validation';
 const { setRegistration } = useAuthStore()
 const { registrationErrors } = storeToRefs(useAuthStore())
 const emit = defineEmits(['goToNext'])
@@ -99,7 +100,10 @@ const backHandler = () => {
 }
 watchEffect(() => {
     if (registrationErrors.value) {
-        setErrors(formatErrors(registrationErrors, 'user'));
+
+
+
+        setErrors(formatFetchErrors(registrationErrors.value, 'user'));
     }
 })
 </script>

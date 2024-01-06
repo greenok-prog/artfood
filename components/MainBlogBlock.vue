@@ -43,6 +43,7 @@ const { data } = await useFetch<Blog[]>('/api/blog-list')
         grid-template-columns: 1fr 1fr 1fr 1fr;
         gap: 30px;
         margin-top: 40px;
+        align-items: flex-start;
 
         @include atXl {
             grid-template-columns: 1fr 1fr 1fr;

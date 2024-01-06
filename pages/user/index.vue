@@ -1,13 +1,13 @@
 <template>
-    <ProfileWrapper v-if="user">
+    <ProfileWrapper>
         <template #default="{ back }">
             <ProfileBack @onClick="back">
                 Мой профиль
             </ProfileBack>
-            <div>
-                <ProfileUser v-if="user?.user_type === 'individual'"
+            <div v-if="data">
+                <ProfileUser v-if="data?.user_type === 'individual'"
                     :data="data" />
-                <ProfileCompany v-if="user?.user_type === 'company'"
+                <ProfileCompany v-if="data?.user_type === 'company'"
                     :data="data" />
             </div>
         </template>
@@ -23,6 +23,6 @@ definePageMeta({
 const { setUser, getUser } = useAuthStore()
 const { user } = storeToRefs(useAuthStore())
 
-const data = await getUser()
-setUser(data)
+const { data } = await useAuthFetch('/api/profile')
+setUser(data.value)
 </script>
