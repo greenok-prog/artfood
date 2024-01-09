@@ -48,7 +48,8 @@
 
         <VeeField name="agree">
             <VCheckbox v-model="agree" class="registration-loc__agree">
-                Я прочитал (а) <VLink to="#" type="underline">условия
+                Я прочитал (а) <VLink to="/payment-and-delivery"
+                    type="underline">условия
                     оплаты и
                     доставки</VLink>
                 и даю согласие на обработку персональных данных
@@ -141,16 +142,6 @@ const submit = handleSubmit(async () => {
 
         store.setRegistrationErrors(e.data.data)
     }
-
-
-
-
-
-
-
-
-
-
 
 })
 </script>

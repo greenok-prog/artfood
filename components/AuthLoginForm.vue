@@ -5,8 +5,7 @@
             :errorMessage="serverError" />
         <VeeField name="email" v-slot="{ errorMessage }">
             <BaseInput v-model="email" class="login-form__login"
-                placeholder="E-mail или телефон"
-                :error-message="errorMessage" />
+                placeholder="E-mail" :error-message="errorMessage" />
 
         </VeeField>
         <VeeField name="password" v-slot="{ errorMessage }">

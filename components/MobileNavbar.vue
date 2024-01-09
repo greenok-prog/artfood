@@ -27,7 +27,8 @@
             <NavbarFavoriteSvg />
             <span>Избранное</span>
         </NuxtLink>
-        <NuxtLink to="/auth/login" class="mobile-navbar__item">
+        <NuxtLink :to="!isLoggedIn ? '/auth/login' : '/user'"
+            class="mobile-navbar__item">
             <NavbarUserSvg />
             <span>{{ isLoggedIn ? 'Аккаунт' : 'Вход' }}</span>
         </NuxtLink>

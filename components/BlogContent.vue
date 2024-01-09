@@ -17,9 +17,9 @@
                 Назад
             </NuxtLink>
 
-            <button class="blog-content__share-mini" @click="open">
+            <!-- <button class="blog-content__share-mini" @click="open">
                 <ShareSvg />
-            </button>
+            </button> -->
             <!-- <div class="blog-content__share">
                 Поделиться статьей:
                 <span>

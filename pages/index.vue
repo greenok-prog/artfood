@@ -2,6 +2,7 @@
     <div class="container">
         <MainPromo v-if="discounts" class="promo"
             :discounts="discounts?.results" />
+
     </div>
     <MainDiscountProducts class="discount" />
     <MainPopularProducts class="popular" />
@@ -10,6 +11,7 @@
     <div class="container">
         <MainPromo v-if="discounts" class="slider"
             :discounts="discounts?.results" />
+        <MainPartners class="brands" />
     </div>
     <div class="bg-grey">
         <MainPopularCategories class="categories" />
@@ -65,12 +67,24 @@ const { data: discounts } = useFetch<ListDiscount[]>('/api/discounts-is_show')
     }
 }
 
-.bg-grey {
-    background-color: #F9F9F9;
+.brands {
     padding-top: 120px;
+    margin-top: 120px;
 
     @include atMd {
         padding-top: 70px;
+        margin-top: 70px;
+    }
+}
+
+.bg-grey {
+    background-color: #F9F9F9;
+    padding-top: 120px;
+    margin-top: 120px;
+
+    @include atMd {
+        padding-top: 70px;
+        margin-top: 70px;
     }
 }
 </style>

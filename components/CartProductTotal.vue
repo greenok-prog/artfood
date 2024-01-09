@@ -20,7 +20,7 @@
                 <span>{{ cart.getTotalCartPrice }}₸</span>
             </div>
             <div class="cart-total__price-item"
-                v-if="Number(cart.totalDiscount) > 0">
+                v-if="Math.abs(Number(cart.totalDiscount)) > 0">
                 Применена скидка: <span>-{{ cart.totalDiscount }}%</span>
             </div>
             <div class="cart-total__price-total">

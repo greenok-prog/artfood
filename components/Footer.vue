@@ -66,7 +66,8 @@
                         </NuxtLink>
                         <NuxtLink class="footer__company-block">Возврат
                         </NuxtLink>
-                        <NuxtLink class="footer__company-block">Частые
+                        <NuxtLink to="/faq" class="footer__company-block">
+                            Частые
                             вопросы</NuxtLink>
                     </div>
                 </div>

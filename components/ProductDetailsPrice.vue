@@ -30,27 +30,29 @@
                 <ProductDetailsFavoriteSvg />
             </button>
         </div>
-        <button class="product-price__buy">Купить сейчас</button>
+        <!-- <button class="product-price__buy">Купить сейчас</button> -->
         <div class="product-price__loc product-price__info">
             <LocationSvg />
             <div>
-                Самовывоз: <span>17 октября</span>
+                Самовывоз:
+                <!-- <span>17 октября</span> -->
             </div>
         </div>
-        <span class="product-price__check">Посмотреть адрес</span>
+        <NuxtLink to="/contacts" class="product-price__check">Посмотреть
+            адрес</NuxtLink>
         <div class="product-price__delivery product-price__info">
             <DeliverySvg />
             <div>
-                Доставка: <span>18 октября</span>
+                Доставка: <span>Уточните у менеджера</span>
             </div>
         </div>
         <div class="product-price__actions">
-            <button>
+            <!-- <button>
                 <CompareSvg /> Сравнить
-            </button>
-            <button>
+            </button> -->
+            <!-- <button>
                 <ShareSvg />Поделиться
-            </button>
+            </button> -->
         </div>
     </div>
 </template>
@@ -92,8 +94,8 @@ const increaseQuantity = () => {
 const decreaseQuantity = () => {
     productCount.value--
 }
-const addProductToCart = () => {
-    addTocart(props.product, productCount.value)
+const addProductToCart = async () => {
+    await addTocart(props.product, productCount.value)
 }
 </script>
 <style lang="scss" scoped>

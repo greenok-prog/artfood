@@ -51,6 +51,7 @@ const interestingBlog = computed(() => {
 
         @include atMd {
             display: flex;
+            margin-top: 15px;
         }
     }
 

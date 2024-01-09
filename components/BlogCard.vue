@@ -43,7 +43,7 @@ const createdDate = computed(() => {
     justify-content: space-between;
 
     @include atMd {
-        padding: 0;
+        padding: 10px;
     }
 
     &__image {
@@ -63,9 +63,7 @@ const createdDate = computed(() => {
     }
 
     &__content {
-        @include atMd {
-            padding: 10px;
-        }
+        @include atMd {}
     }
 
     &__publish {

@@ -61,8 +61,10 @@
         <div class="cart-product__actions">
             <div class="cart-product__count">
                 <span>
+
                     {{
-                        product.quantity_product >
+
+                        product.quantity_product >=
                         Number(productInfo.opt_quantity)
                         ? 'Опт'
                         : 'Розница'
@@ -93,8 +95,6 @@ const props = defineProps<{
     index: number,
 }>()
 
-
-
 const isInFavorite = computed(() => {
     return useFavoriteStore().favorite.find(el => el.id === productInfo.value.id)
 })
@@ -102,6 +102,7 @@ const isInFavorite = computed(() => {
 const productInfo = computed(() => {
     return props.product.product
 })
+
 const increase = () => {
     increaseQuantity(props.index)
 }

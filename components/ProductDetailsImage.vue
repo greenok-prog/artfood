@@ -4,8 +4,7 @@
         <Swiper :onSwiper="s => swiper = s" :modules="[SwiperPagination]"
             :pagination="true" :slidesPerView="1"
             class="product-images__inner">
-            <ProductBadge class="product-images__badge" type="discount"
-                :discount="discount" />
+            <ProductBadge class="product-images__badge" type="new" />
             <SwiperSlide class="product-images__slide"
                 v-for="image in images">
                 <img :src="image.image" alt="">

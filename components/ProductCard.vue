@@ -29,7 +29,12 @@
                             <span class="product-card__price_new">{{
                                 data.opt_price }}
                                 ₸</span>
-                            <span class="product-card__price_old">2690
+                            <span class="product-card__price_old">{{
+                                data.discount_price ?
+                                data.discount_price :
+                                data.price
+
+                            }}
                                 ₸</span>
                         </div>
                     </div>
@@ -41,7 +46,8 @@
                                 : data.price }}
                                 ₸</span>
                             <span class="product-card__price_old"
-                                v-if="data.discount_price">{{ data.price
+                                v-if="data.discount_price && data.price > 0">{{
+                                    data.price
                                 }}
                                 ₸</span>
                         </div>

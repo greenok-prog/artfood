@@ -54,6 +54,7 @@ const productStore = useProducts()
 
 const selectAll = ref(false)
 await store.setCart()
+
 productStore.getLocalViewed()
 
 </script>

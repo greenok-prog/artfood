@@ -85,16 +85,16 @@ export const useCartStore = defineStore("cart", {
           product_item: formatedCart,
         },
       });
-      execute;
+      execute();
       if (!cartId.value) {
         cartId.value = data.value.id;
       }
     },
     setTotalDiscount() {
       this.totalDiscount = (
-        (this.getTotalCartPrice / this.totalPrice - 1) *
+        ((this.totalPrice - this.getTotalCartPrice) / this.getTotalCartPrice) *
         100
-      ).toFixed();
+      ).toFixed(1);
     },
   },
   getters: {
