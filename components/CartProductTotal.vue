@@ -20,7 +20,7 @@
                 <span>{{ cart.getTotalCartPrice }}₸</span>
             </div>
             <div class="cart-total__price-item"
-                v-if="Math.abs(Number(cart.totalDiscount)) > 0">
+                v-if="Math.abs(Number(cart.totalDiscount)) > 0 && Math.abs(Number(cart.totalDiscount)) < 100">
                 Применена скидка: <span>-{{ cart.totalDiscount }}%</span>
             </div>
             <div class="cart-total__price-total">
@@ -29,7 +29,8 @@
             </div>
         </div>
         <div class="cart-total__bottom">
-            <VBtn @click="navigateToOrder">Оформить заказ</VBtn>
+            <VBtn @click="navigateToOrder">
+                Оформить заказ</VBtn>
             <p>Доступные способы и время доставки можно выбрать при
                 оформлении заказа</p>
         </div>

@@ -1,7 +1,8 @@
 <template>
     <div class="order-product">
         <div class="order-product__image">
-            <img src="/order-image.png" alt="">
+            <img v-if="product.product.images[0]"
+                :src="product.product.images[0].image" alt="">
         </div>
         <div class="order-product__info">
             <div class="order-product__top">
@@ -38,7 +39,8 @@
 
                                 ₸</span>
                             <span class="order-product__price-item_old"
-                                v-if="product.product.discount_price">{{ product.product.price }}₸</span>
+                                v-if="product.product.discount_price">{{
+                                    product.product.price }}₸</span>
                         </p>
 
                     </div>
@@ -63,6 +65,8 @@ interface OrderProduct {
 const props = defineProps<{
     product: OrderProduct
 }>()
+
+
 </script>
 <style lang="scss" scoped>
 .order-product {

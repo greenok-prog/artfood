@@ -47,9 +47,10 @@
             </div>
         </div>
         <div class="product-price__actions">
-            <!-- <button>
+            <button v-if="!useCompareStore().productIsCompare(product.id)"
+                @click="addToCompare(product)">
                 <CompareSvg /> Сравнить
-            </button> -->
+            </button>
             <!-- <button>
                 <ShareSvg />Поделиться
             </button> -->
@@ -58,6 +59,7 @@
 </template>
 <script lang="ts" setup>
 import { useCartStore } from '~/store/cart';
+import { useCompareStore } from '~/store/compare';
 import { useFavoriteStore } from '~/store/favorite';
 import type { ListProduct } from '~/types/api-schema';
 
@@ -67,6 +69,7 @@ const props = defineProps<{
 const { removeFromFavorite, addToFavorite } = useFavoriteStore()
 const { favorite } = storeToRefs(useFavoriteStore())
 const { addTocart } = useCartStore()
+const { addToCompare } = useCompareStore()
 const productCount = ref(1)
 const currentPrice = computed(() => {
     if (productCount.value >= Number(props.product.opt_quantity)) {

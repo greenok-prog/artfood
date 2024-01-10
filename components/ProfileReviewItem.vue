@@ -1,7 +1,8 @@
 <template>
     <div class="profile-review">
         <div class="profile-review__image">
-            <img src="/order-image.png" alt="">
+            <img v-if="review.images[0]" :src="review.images[0].image"
+                alt="">
         </div>
         <div class="profile-review__content">
             <h4>{{ review.name }}</h4>

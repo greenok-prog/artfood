@@ -76,3 +76,25 @@ export const PARTNERS_BREAKPOINTS: ISliderBreakpoints = {
     slidesPerView: 5.2,
   },
 };
+
+export const compareBreakpoints: ISliderBreakpoints = {
+  0: {
+    slidesPerView: 2.2,
+  },
+  [mobile]: {
+    slidesPerView: 2.2,
+  },
+
+  [mobileWide]: {
+    slidesPerView: 3,
+  },
+  [tabletWide]: {
+    slidesPerView: 2,
+  },
+  [desktopMini]: {
+    slidesPerView: 3,
+  },
+  [desktop]: {
+    slidesPerView: 3,
+  },
+};

@@ -85,7 +85,6 @@ export const useCartStore = defineStore("cart", {
           product_item: formatedCart,
         },
       });
-      execute();
       if (!cartId.value) {
         cartId.value = data.value.id;
       }

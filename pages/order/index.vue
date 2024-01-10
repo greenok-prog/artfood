@@ -63,7 +63,7 @@ const submitHandler = async (paymentMethod: 'cash' | 'card' | 'non_cash') => {
     })
     if (status.value === 'success') {
         cartId.value = null
-        await cartStore.$reset()
+        cartStore.$reset()
         if (paymentMethod === 'card') {
             const { data: payment } = await useAuthFetch('/api/payment', {
                 method: 'post',
@@ -89,7 +89,11 @@ const selectMethod = (v: string) => {
 const navigateToCart = () => {
     return navigateTo('/cart')
 }
-
+onMounted(() => {
+    if (!cartStore.cartLength) {
+        return navigateTo('/cart')
+    }
+})
 </script>
 <style lang="scss" scoped>
 .order {

@@ -10,12 +10,12 @@
                 <span>+7 (727) 743-38-78</span>
                 <span>+7 (707) 743-39-79</span>
             </div>
-            <div class="support__block-or">
+            <!-- <div class="support__block-or">
                 Или перейдите по кнопке
             </div>
             <button>
                 <SupportWsSvg />Написать в поддержку
-            </button>
+            </button> -->
         </div>
     </div>
 </template>

@@ -21,18 +21,19 @@
                                 <InstagramSvg
                                     v-if="link.name === 'Instagram'" />
                                 <FacebookSvg
-                                    v-if="link.name === 'Telegram'" />
+                                    v-if="link.name === 'Facebook'" />
                             </NuxtLink>
                         </div>
                     </div>
                 </div>
                 <div class="footer__users">
                     <h4 class="footer__title">Покупателям</h4>
-                    <div class="footer__users-list">
-                        <NuxtLink to="#">Ингредиенты</NuxtLink>
-                        <NuxtLink to="#">Инвентарь</NuxtLink>
-                        <NuxtLink to="#">Украшения для торта</NuxtLink>
-                        <NuxtLink to="#">Упаковочные материалы</NuxtLink>
+                    <div v-if="categories" class="footer__users-list">
+                        <NuxtLink
+                            v-for="category in categories.results.slice(0, 4)"
+                            :to="`/catalog?subcategory__category=${category.id}`">
+                            {{ category.name }}</NuxtLink>
+
 
                     </div>
                 </div>
@@ -41,7 +42,8 @@
                     <div class="footer__contacts-block">
                         <p class="footer__contacts-block-title">Поддержка
                         </p>
-                        <NuxtLink :to="`tel:+7 (777) 920 - 91 - 82`">
+                        <NuxtLink
+                            :to="`tel:${address.contact_store[0].phone_numbers}`">
                             <p>{{ address.contact_store[0].phone_numbers
                             }}
                             </p>
@@ -60,11 +62,14 @@
                             <NuxtLink to="/contacts">Контакты</NuxtLink>
 
                         </div>
-                        <NuxtLink class="footer__company-block">Доставка и
+                        <NuxtLink to="delivery-and-pickup"
+                            class="footer__company-block">Доставка и
                             самовывоз</NuxtLink>
-                        <NuxtLink class="footer__company-block">Оплата
+                        <NuxtLink to="/payment-and-delivery"
+                            class="footer__company-block">Оплата
                         </NuxtLink>
-                        <NuxtLink class="footer__company-block">Возврат
+                        <NuxtLink to="/return-policy"
+                            class="footer__company-block">Возврат
                         </NuxtLink>
                         <NuxtLink to="/faq" class="footer__company-block">
                             Частые
@@ -108,9 +113,12 @@ const { data: social } = await useFetch<{ results: ISocial[] }>('/api/store-soci
     method: 'get'
 })
 const { data: addresses } = await useFetch<{ results: IAddress[] }>('/api/store-addresses')
+const { data: categories } = await useFetch('/api/popular-categories')
 const address = computed(() => {
     return addresses.value.results[0]
 })
+
+
 
 
 

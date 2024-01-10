@@ -35,19 +35,30 @@
                     <NuxtLink @click="closeHandler"
                         to="/delivery-and-pickup">Доставка и
                         самовывоз</NuxtLink>
-                    <NuxtLink @click="closeHandler" to="#">Оплата
+                    <NuxtLink @click="closeHandler"
+                        to="/payment-and-delivery">Оплата
                     </NuxtLink>
-                    <NuxtLink @click="closeHandler" to="#">Возврат
+                    <NuxtLink @click="closeHandler" to="/return-policy">
+                        Возврат
                     </NuxtLink>
                     <NuxtLink @click="closeHandler" to="/faq">Частые
                         вопросы</NuxtLink>
                 </div>
             </div>
             <div class="burger-navbar__block">
+                <NuxtLink @click="closeHandler"
+                    class="burger-navbar__compare" to="/compare">
+                    <MobileCompareSvg />
+                    <span>Сравнение</span>
+                </NuxtLink>
+            </div>
+            <div class="burger-navbar__block">
                 <div class="burger-navbar__addres">
-                    <p>Казахстан, г.Алматы</p>
+                    <p>Казахстан, г.{{ address.city.name }}</p>
                     <div>
-                        <span>Проспект Райымбека 214/1, </span>
+                        <span>ул. {{ address.street }} {{
+                            address.house_number
+                        }}, </span>
                         <span>головной офис</span>
                     </div>
                 </div>
@@ -55,43 +66,65 @@
             <div class="burger-navbar__block">
                 <div class="burger-navbar__info">
                     <p class="burger-navbar__info-title">Поддержка</p>
-                    <p class="burger-navbar__info-phone">+7 (777) 920
-                        - 91
-                        - 82</p>
+                    <p class="burger-navbar__info-phone">{{
+                        address.contact_store[0].phone_numbers
+                    }}</p>
                     <span>Пн - Пт с 9.00 - 18.00</span>
                 </div>
             </div>
-            <div class="burger-navbar__block">
+            <div class="burger-navbar__block" v-if="address.contact_store[1]
+                    ">
                 <div class="burger-navbar__info">
                     <p class="burger-navbar__info-title">Доставка</p>
-                    <p class="burger-navbar__info-phone">+7 (777) 920
-                        - 91
-                        - 82</p>
+                    <p class="burger-navbar__info-phone">{{
+                        address.contact_store[1].phone_numbers
+                    }}</p>
                     <span>каждый день с 9.00 - 18.00</span>
                 </div>
             </div>
         </div>
         <div class="burger-navbar__bottom">
-            <NuxtLink to="#">
-                <BurgerVk />
+            <NuxtLink :to="link.url_network" target="_blank"
+                v-for="link in social?.results">
+                <BurgerVk v-if="link.name === 'Vk'" />
+                <BurgerInst v-if="link.name === 'Instagram'" />
+                <BurgerFacebook v-if="link.name === 'Facebook'" />
             </NuxtLink>
-            <NuxtLink to="#">
-                <BurgerInst />
-            </NuxtLink>
-            <NuxtLink to="#">
-                <BurgerFacebook />
-            </NuxtLink>
+
         </div>
 
     </VueFinalModal>
 </template>
 <script lang="ts" setup>
 import { VueFinalModal } from 'vue-final-modal'
+interface ISocial {
+    name: string,
+    url_network: string
+}
+interface IAddress {
+    city: {
+        name: string
+    },
+    district: {
+        name: string
+    },
+    contact_store: {
+        phone_number: string
+    }[],
+    house_number: string
+}
 const emit = defineEmits(['close'])
 const closeHandler = () => {
     emit('close')
 }
-
+const { data: social } = await useFetch<{ results: ISocial[] }>('/api/store-social', {
+    method: 'get'
+})
+const { data: addresses } = await useFetch<{ results: IAddress[] }>('/api/store-addresses')
+const address = computed(() => {
+    const a = addresses.value.results[0]
+    return a
+})
 </script>
 <style lang="scss">
 .burger-navbar__modal {
@@ -111,6 +144,13 @@ const closeHandler = () => {
     border-radius: 14px 0px 0px 14px;
 
     padding: 9px 16px 16px 16px;
+
+    &__compare {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        color: $text;
+    }
 
     &__content {
         display: flex;

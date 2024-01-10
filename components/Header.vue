@@ -46,10 +46,15 @@
                         <ArrowDownSvg />
                     </button>
                     <SearchInput v-model="search" @onSearch="onSearch" />
+                    <NuxtLink to="/compare" class="header-favorite">
+                        <HeaderCompareSvg />
+                        <span>({{ compareStore.compareCount }})</span>
+                    </NuxtLink>
                     <NuxtLink to="/cart" class="header-cart">
                         <CartSvg />
                         <span>({{ cartStore.cartLength }})</span>
                     </NuxtLink>
+
                     <NuxtLink to="/user/favorite" class="header-favorite">
                         <HeaderFavSvg />
                         <span>({{ store.favoriteCount }})</span>
@@ -67,6 +72,7 @@ import ModalCatalog from "@/components/catalog/ModalCatalog.vue";
 import HeaderBurgerNavbar from "@/components/HeaderBurgerNavbar.vue";
 import { useFavoriteStore } from "~/store/favorite";
 import { useCartStore } from "~/store/cart";
+import { useCompareStore } from "~/store/compare";
 
 const router = useRouter()
 const search = ref('')
@@ -92,6 +98,7 @@ const { open: openNavbar, close: closeNavbar } = useModal({
 });
 const store = useFavoriteStore()
 const cartStore = useCartStore()
+const compareStore = useCompareStore()
 
 
 
