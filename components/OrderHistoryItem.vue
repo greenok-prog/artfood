@@ -3,7 +3,7 @@
         <div class="history-item__header">
             <div class="history-item__header-left">
                 <p>Общая сумма заказа: {{ totalPrice }} ₸</p>
-                <!-- <VLink to="#">Повторить заказ</VLink> -->
+                <!-- <VLink to="#" @click="repeatOrder">Повторить заказ</VLink> -->
             </div>
             <div class="history-item__header-right">
                 <div class="history-item__header-info">
@@ -60,6 +60,23 @@ const orderDate = computed(() => {
     return formatDate(props.order.date_created)
 })
 
+// TODO: Функция "Повторить заказ"
+
+// const repeatOrder = async () => {
+//     const cartId = useCookie("cartId");
+//     const formatedCart = props.order.order_items.map((el) => {
+//         return { quantity_product: el.quantity, id: el.id };
+//     });
+//     const { data, execute } = await useAuthFetch("/api/cart-add", {
+//         method: "post",
+//         body: {
+//             cart_id: cartId.value ? cartId.value : null,
+//             product_item: formatedCart,
+//         },
+//     });
+//     console.log(data.value);
+
+// }
 
 const { open, close } = useModal({
     component: CancellationOrderModal,

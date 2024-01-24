@@ -30,6 +30,7 @@
     "pinia": "^2.1.7",
     "prettier": "^3.0.3",
     "sass": "^1.69.4",
+    "vue-awesome-paginate": "^1.1.46",
     "vue-final-modal": "^4.4.5",
     "vue-jwt-decode": "^0.1.0",
     "vue3-tabs-component": "^1.3.7",

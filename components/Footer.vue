@@ -87,6 +87,12 @@
                         конфиденциальности
                     </NuxtLink>
                 </li>
+                <li class="footer__bottom-card">
+                    <MasterCardSvg />
+                </li>
+                <li class="footer__bottom-card">
+                    <VisaSvg />
+                </li>
 
             </ul>
         </div>
@@ -162,6 +168,16 @@ const address = computed(() => {
         padding-bottom: 36px;
         border-top: 1px solid rgba(255, 255, 255, 0.6);
 
+        &-card {
+            background: white;
+            height: 48px;
+            width: 100px;
+
+            svg {
+                height: 100%;
+                width: 100%;
+            }
+        }
 
 
         ul {
@@ -170,6 +186,7 @@ const address = computed(() => {
             list-style-type: none;
             gap: 125px;
             font-size: 14px;
+            align-items: center;
 
             @include atXXl {
                 gap: 30px;

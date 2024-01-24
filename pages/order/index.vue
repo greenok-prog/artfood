@@ -4,11 +4,7 @@
             <div class="order__top">
                 <PathHistory class="order__path"
                     :path="['Главная', 'Корзина', 'Оформление заказа']" />
-                <div class="order__top-message">Вы зарегистрированы, как
-                    физическое лицо. <VLink to="/auth/login">Переключиться
-                        на юридическое лицо
-                    </VLink>
-                </div>
+
             </div>
             <div class="order__header">
                 <ProfileBack class="order__header-back"

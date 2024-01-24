@@ -1,139 +1,74 @@
-<template>
-    <div class="catalog-pagination">
-        <VBtn :disabled="activePage === 1"
-            class="catalog-pagination__back" @click="prevPageHandler">
-            <span>Назад</span>
-            <ProfileBackArrowSvg />
-        </VBtn>
-        <div class="catalog-pagination__list">
-            <span class="catalog-pagination__item"
-                @click="selectPageHandler(i)"
-                :class="{ 'catalog-pagination__item_active': activePage === i }"
-                v-for="i in pageCount">{{ i
-                }}</span>
-
-        </div>
-        <VBtn :disabled="activePage === pageCount"
-            class="catalog-pagination__next" @click="nextPageHandler">
-            <span>Далее</span>
-            <ProfileBackArrowSvg />
-        </VBtn>
-    </div>
-</template>
-<script lang="ts" setup>
+<script setup lang="ts">
 import { useFilter } from '~/store/filter';
-
 const props = defineProps<{
-    productCount: number,
-
+    productCount: number
 }>()
 const { setPage } = useFilter()
-const pageCount = computed(() => {
-    return Math.ceil((props.productCount / 20))
-})
+const onClickHandler = (page: number) => {
+    setPage(page)
+};
 
-
-
-const activePage = ref(1)
-const nextPageHandler = () => {
-    activePage.value++
-    setPage(activePage.value)
-}
-const prevPageHandler = () => {
-    activePage.value--
-    setPage(activePage.value)
-}
-const selectPageHandler = (i: number) => {
-    activePage.value = i
-    setPage(i)
-}
+const currentPage = ref(1);
 
 </script>
-<style lang="scss" scoped>
-.catalog-pagination {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    // .catalog-pagination__back
 
+<template>
+    <vue-awesome-paginate class="catalog-paginator"
+        :total-items="productCount" :max-pages-shown="5"
+        v-model="currentPage" :show-breakpoint-buttons="false"
+        :on-click="onClickHandler" prev-button-content="Назад"
+        next-button-content="Далее">
 
+    </vue-awesome-paginate>
+</template>
 
-    // .catalog-pagination__list
+<style lang="scss">
+.catalog-paginator {
+    width: 100%;
 
-    &__list {
-        display: flex;
-
-        p {
-            color: #C4C6C2;
-        }
-    }
-
-    // .catalog-pagination__item
-
-    &__item {
-        cursor: pointer;
-        font-size: 18px;
-        font-weight: 700;
-        padding: 10px;
-        color: $neutral;
-
-        &-last,
-        &-more {
-            @include atXl {
-                display: none;
-            }
-        }
-
-        &_active {
-            color: white;
-            border-radius: 4px;
-            background: $additional;
-
-        }
-    }
-
-    &__back {
-        :deep(svg) {}
-    }
-
-    // .catalog-pagination__next
-
-    &__next,
-    &__back {
+    .back-button,
+    .next-button {
         width: 140px;
-        height: 40px;
-        padding: 0;
+        background: $additional;
+        color: white;
+        border-radius: 70px;
+        flex-grow: 1;
 
-        @include atMd {
-            width: 34px;
-            height: 34px;
-            align-items: center;
-            justify-content: center;
-            display: flex;
-            border-radius: 60px;
-        }
-
-        span {
-            display: block;
-
-            @include atMd {
-                display: none;
-            }
-        }
-
-        svg {
-            display: none;
-
-            @include atMd {
-                display: block;
-            }
+        &:hover {
+            background: $additional;
+            color: white;
         }
     }
+}
 
-    &__next {
-        svg {
-            transform: rotate(180deg);
-        }
-    }
+.pagination-container {
+
+    column-gap: 10px;
+    justify-content: center;
+}
+
+.paginate-buttons {
+    min-width: 30px;
+    height: 40px;
+    padding: 10px;
+    cursor: pointer;
+    background-color: none;
+    color: $text;
+
+
+}
+
+.paginate-buttons:hover {
+    background-color: #d8d8d8;
+}
+
+.active-page {
+    background-color: $additional;
+
+    color: white;
+}
+
+.active-page:hover {
+    background-color: #2988c8;
 }
 </style>

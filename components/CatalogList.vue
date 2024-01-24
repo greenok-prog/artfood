@@ -10,7 +10,10 @@
                     products.count }}
                     товара</span>
             </div>
-            <VBtn class="catalog-list__download">Скачать каталог</VBtn>
+            <a href="/catalog.pdf" download>
+                <VBtn class="catalog-list__download">Скачать каталог
+                </VBtn>
+            </a>
         </div>
         <div class="catalog-list__filter-mini">
             <div class="catalog-list__filter-mini-sort"
@@ -51,7 +54,7 @@
                 <ProductCard :data="product" />
             </div>
         </div>
-        <CatalogListPagination v-if="products.count"
+        <CatalogListPagination v-if="products.count > 20"
             :product-count="products.count"
             class="catalog-list__pagination" />
     </div>
@@ -68,7 +71,6 @@ import { SORT } from '~/constants/filter'
 const props = defineProps<{
     products: ProductListResult
 }>()
-
 const { resetFilter } = useFilter()
 const { brand, maxPrice, minPrice, activeCategory } = storeToRefs(useFilter())
 const route = useRoute()
