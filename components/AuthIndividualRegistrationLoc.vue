@@ -27,7 +27,15 @@
                         v-model="address.value.street"
                         placeholder="Например: улица Абая 149/1 *" />
                 </VeeField>
+
+                <VeeField :name="`addresses[${index}].house_number`"
+                    v-slot="{ errorMessage }">
+                    <BaseInput :error-message="errorMessage"
+                        v-model="address.value.house_number"
+                        placeholder="Номер дома *" />
+                </VeeField>
                 <div class="registration-loc__group">
+
                     <VeeField
                         :name="`addresses[${index}].apartment_number`"
                         v-slot="{ errorMessage }">
@@ -80,7 +88,8 @@ const schema = object({
             name: string().required("Обязательное поле")
         }),
         apartment_number: string().required("Обязательное поле"),
-        street: string().required("Обязательное поле")
+        street: string().required("Обязательное поле"),
+        house_number: string().required("Обязательное поле")
     }))
 })
 const { handleSubmit, errors } = useForm({
@@ -123,8 +132,8 @@ const submit = handleSubmit(async () => {
         }),
         contact_person: {
             surname: store.registrationUser.username,
-            first_name: store.registrationUser.second_name,
-            second_name: store.registrationUser.second_name
+            first_name: store.registrationUser.last_name,
+            second_name: store.registrationUser.username
         }
     }
     store.setRegistrationErrors(null)

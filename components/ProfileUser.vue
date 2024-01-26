@@ -35,7 +35,7 @@
                     :key="address.id"><span>{{ index + 1 }}.</span>{{
                         formatAddress(address) }}</li>
             </ul>
-            <VLink to="/user/addresses">Добавить адрес</VLink>
+            <VLink to="/user/address-add">Добавить адрес</VLink>
         </div>
     </div>
 </template>

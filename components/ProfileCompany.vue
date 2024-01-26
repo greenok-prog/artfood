@@ -24,6 +24,7 @@
                 <p>**********</p>
             </div>
         </div>
+
         <div class="profile-user__block">
             <div class="profile-user__block-header">
                 <h4>Данные о компании</h4>
@@ -44,6 +45,22 @@
                 <li><span>БИК:</span> {{ data?.bik }}</li>
             </ul>
         </div>
+        <div class="profile-user__block">
+            <div class="profile-user__block-header">
+                <h4>Мои адреса</h4>
+
+                <NuxtLink to="/user/addresses">
+                    <EditSvg />
+                </NuxtLink>
+            </div>
+            <ul class="profile-user__block-list">
+                <li class="profile-user__address"
+                    v-for="(address, index) in data.addresses"
+                    :key="address.id"><span>{{ index + 1 }}.</span>{{
+                        formatUserAddress(address) }}</li>
+            </ul>
+            <VLink to="/user/address-add">Добавить адрес</VLink>
+        </div>
 
 
     </div>
@@ -59,6 +76,9 @@ const props = defineProps<{
 const formatAddress = computed(() => {
     return `г.${props.data.company_address.city.name}, ул. ${props.data.company_address.street} ${props.data.company_address.house_number ?? props.data.company_address.house_number}`
 })
+const formatUserAddress = (address: any) => {
+    return `г.${address.city.name}, ул. ${address.street} ${address.house_number}`
+}
 </script>
 
 <style lang="scss" scoped>

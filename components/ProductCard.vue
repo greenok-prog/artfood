@@ -1,8 +1,9 @@
 <template>
     <div class="product-card">
         <div class="product-card__image">
-            <img v-if="data?.images[0]" :src="data.images[0].image"
-                alt="">
+            <NuxtLink v-if="data?.images[0]" :to="`/catalog/${data.id}`">
+                <img :src="data.images[0].image" alt="">
+            </NuxtLink>
             <ProductBadge type="new" class="product-card__discount">
 
             </ProductBadge>

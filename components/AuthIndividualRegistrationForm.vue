@@ -58,8 +58,8 @@ const schema = object({
         email: string().required("Обязательное поле").email("Неверный формат email"),
         password: string().required("Обязательное поле").min(8, "Длина пароля должна быть больше 8 символов"),
         username: string().required("Обязательное поле"),
-        last_name: string(),
-        second_name: string().required("Обязательное поле"),
+        last_name: string().required("Обязательное поле"),
+        second_name: string(),
     })
 
 })
