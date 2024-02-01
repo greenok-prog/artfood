@@ -1,6 +1,6 @@
 <template>
     <div class="slider">
-        <div class="slider__navigation" v-if="items.lenght > 5">
+        <div v-if="items.length > 5" class="slider__navigation">
             <button @click="swiper.slidePrev()" class="slider-prev">
                 <SliderArrowSvg />
             </button>
@@ -28,10 +28,13 @@ import type { ISliderBreakpoints } from '~/dto/breakpoints';
 const swiper = ref<any>(null)
 
 
-defineProps<{
+const props = defineProps<{
     breakpoints: ISliderBreakpoints,
     items: any
 }>()
+
+
+
 </script>
 
 <style lang="scss">

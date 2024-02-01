@@ -12,6 +12,7 @@
         </main>
         <Footer class="footer" />
     </div>
+    <WhatsappLink class="whatsapp-link" />
     <MobileNavbar />
 </template>
 <script lang="ts" setup>

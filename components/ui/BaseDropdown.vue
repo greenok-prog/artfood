@@ -107,6 +107,8 @@ const onSelect = (v: any) => {
         z-index: 5;
         box-shadow: 0px 4px 10px 0px rgba(0, 0, 0, 0.20);
         cursor: pointer;
+        overflow-y: scroll;
+        max-height: 300px;
 
 
 

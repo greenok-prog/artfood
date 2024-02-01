@@ -12,11 +12,12 @@
                     <ModalCloseSvg />
                 </button>
             </div>
-            <span class="delivery-address-modal__add"
-                @click="activeLink++">
+            <NuxtLink class="delivery-address-modal__add"
+                to="/user/address-add">
                 <AddSvg /> Добавить новый адрес
-            </span>
-            <div class="delivery-address-modal__list">
+            </NuxtLink>
+            <div class="delivery-address-modal__list"
+                v-if="user.addresses.length">
                 <label class="delivery-address-modal__item"
                     :class="{ 'delivery-address-modal__item_active': i.id === selected.id }"
                     v-for="i in user.addresses" :key="i.id">
@@ -32,7 +33,8 @@
                 </VBtn>
             </div>
         </div>
-        <DeliveryAdressAddModal @onBack="onBack" v-else />
+        <DeliveryAdressAddModal @onBack="onBack" @onAdd="emit('close')"
+            v-else />
     </VueFinalModal>
 </template>
 
@@ -50,11 +52,13 @@ interface IAddress {
 const { user } = storeToRefs(useAuthStore())
 
 
-const selected = ref<any>(user.value.addresses[0])
+const selected = ref<any>(user.value.addresses[0] || null)
 const formatAddress = (address: IAddress) => {
-    return `г.${address.city.name}, ул. ${address.street} ${address.house_number}`
+    if (address) {
+        return `г.${address.city.name && address.city.name}, ул. ${address.street} ${address.house_number}`
+    }
 }
-const emit = defineEmits(['close'])
+const emit = defineEmits(['close', 'add'])
 const activeLink = ref(0)
 
 const onBack = () => {

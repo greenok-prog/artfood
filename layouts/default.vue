@@ -8,6 +8,7 @@
 
         <Footer class="footer" />
         <MobileNavbar />
+        <WhatsappLink />
     </div>
 </template>
 

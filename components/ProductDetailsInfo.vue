@@ -54,7 +54,7 @@
                     Описание: <p :class="{ 'opened': fullText === true }">
                         {{ product.product_data.description }}
                     </p>
-                    <div v-if="product.product_data.description.length > 180"
+                    <div v-if="product.product_data.description.length > 500"
                         @click="openTextHandler"
                         class="product-info__list-description_more">
                         {{ fullText ? 'Скрыть текст' : `Показать весь
@@ -91,6 +91,7 @@ const discountPercent = computed(() => {
     }
     return getDiscountPercent(price, discount)
 })
+console.log(props.product.product_data.description.length > 180);
 
 </script>
 

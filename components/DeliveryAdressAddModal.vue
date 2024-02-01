@@ -8,35 +8,36 @@
         </div>
         <form @submit.prevent="submitHandler" class="delivery-add__form">
             <VeeField name="address.city" v-slot="{ errorMessage }">
-                <BaseDropdown class="delivery-add__form-city"
-                    placeholder="Город" :options="cities"
+                <BaseDropdown placeholder="Город" :options="cities"
                     v-model="address.city" />
             </VeeField>
-            <VeeField name="address.street" v-slot="{ errorMessage }">
-                <BaseInput v-model="address.street"
-                    :error-message="errorMessage"
-                    placeholder="Например: улица Абая 149/1 *" />
-            </VeeField>
-            <div class="delivery-add__check">
-                <VCheckbox>
-                    <span class="delivery-add__check-text">Частный
-                        дом</span>
-                </VCheckbox>
-            </div>
-            <div class="delivery-add__input-group">
-                <VeeField name="address.house_number"
-                    v-slot="{ errorMessage }">
-                    <BaseInput v-model="address.house_number"
+            <div class="delivery-add__form-city">
+                <VeeField name="address.street" v-slot="{ errorMessage }">
+                    <BaseInput v-model="address.street"
                         :error-message="errorMessage"
-                        placeholder="Дом *" />
+                        placeholder="Например: улица Абая 149/1 *" />
                 </VeeField>
-                <VeeField name="address.apartment_number"
-                    v-slot="{ errorMessage }">
-                    <BaseInput v-model="address.apartment_number"
-                        :error-message="errorMessage"
-                        placeholder="Квартира" />
-                </VeeField>
+                <!-- <div class="delivery-add__check">
+                    <VCheckbox>
+                        <span class="delivery-add__check-text">Частный
+                            дом</span>
+                    </VCheckbox>
+                </div> -->
+                <div class="delivery-add__input-group">
+                    <VeeField name="address.house_number"
+                        v-slot="{ errorMessage }">
+                        <BaseInput v-model="address.house_number"
+                            :error-message="errorMessage"
+                            placeholder="Дом *" />
+                    </VeeField>
+                    <VeeField name="address.apartment_number"
+                        v-slot="{ errorMessage }">
+                        <BaseInput v-model="address.apartment_number"
+                            :error-message="errorMessage"
+                            placeholder="Квартира" />
+                    </VeeField>
 
+                </div>
             </div>
             <div class="delivery-add__button">
                 <VBtn>
@@ -49,6 +50,7 @@
 <script lang="ts" setup>
 import { object, string } from 'yup';
 import { useAddress } from '~/store/address';
+import { useAuthStore } from '~/store/auth';
 
 interface Address {
     city: {},
@@ -63,7 +65,9 @@ const validationSchema = object({
     })
 })
 const { cities } = storeToRefs(useAddress())
-const emit = defineEmits(['onBack'])
+const { getUser } = useAuthStore()
+const { user } = storeToRefs(useAuthStore())
+const emit = defineEmits(['onBack', 'onAdd'])
 const { handleSubmit } = useForm({
     validationSchema: validationSchema,
     initialValues: {
@@ -79,16 +83,22 @@ const { handleSubmit } = useForm({
 const { value: address } = useField<Address>('address')
 
 const submitHandler = handleSubmit(async () => {
+
+
     const fetchBody = {
         city: address.value.city.id,
-        street: address.value.street
+        street: address.value.street,
+        house_number: address.value.house_number
     }
     const { status } = await useAuthFetch('/api/address-add', {
         method: 'post',
         body: fetchBody
     })
     if (status.value === 'success') {
-        emit('onBack')
+        await getUser()
+        // emit('onAdd')
+
+        emit('onAdd')
     }
 
 })
@@ -143,7 +153,7 @@ const submitHandler = handleSubmit(async () => {
         margin-top: 24px;
 
         &-city {
-            margin-bottom: 14px;
+            margin-top: 14px;
         }
 
 

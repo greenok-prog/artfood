@@ -65,5 +65,10 @@ export const useAuthStore = defineStore("auth", {
       const router = useRouter();
       router.push("/");
     },
+    addAddress(address: any) {
+      if (this.user) {
+        this.user.addresses.push(address);
+      }
+    },
   },
 });

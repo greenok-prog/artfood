@@ -9,8 +9,7 @@
         <div class="order-receiving">
             <p class="order-receiving__main">{{ formatedStreetAddress }}
             </p>
-            <!-- <p class="order-receiving__inner">Подъезд 2, этаж 2, домофон
-                225В</p> -->
+
         </div>
     </OrderBlockWrapper>
 </template>
@@ -30,20 +29,29 @@ interface Address {
 const props = defineProps<{
     addresses: Address[]
 }>()
+const emit = defineEmits(['onAdd'])
 const { setAddress } = useOrder()
-const selectedAddress = ref(props.addresses[0])
+const selectedAddress = ref(props.addresses[0] || null)
 const formatedStreetAddress = computed(() => {
-    return `г.${selectedAddress.value.city.name}, ул.${selectedAddress.value.street} ${selectedAddress.value.house_number}, квартира ${selectedAddress.value.apartment_number}`
+    if (selectedAddress.value) {
+        return `г.${selectedAddress.value.city.name}, ул.${selectedAddress.value.street} ${selectedAddress.value.house_number}  ${selectedAddress.value.apartment_number ? ', квартира ' + selectedAddress.value.apartment_number : ''}`
+    } else {
+        return ''
+    }
 })
 
 
 const { open, close } = useModal({
     component: DeliveryAddressModal,
     attrs: {
+        onAdd() {
+            emit('onAdd')
+        },
         onClose(v) {
             selectedAddress.value = v
             setAddress(v)
             close()
+
 
         },
     }

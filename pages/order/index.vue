@@ -21,13 +21,15 @@
                     <OrderInvoicePayment
                         v-if="data.user_type === 'company'" />
                     <OrderReceivingMethod @select-method="selectMethod" />
-                    <OrderReceivingAdress :addresses="data.addresses" />
+                    <OrderReceivingAdress v-if="userA.addresses"
+                        :addresses="userA?.addresses" @onAdd="refresh" />
                     <OrderUserDetails :user="data" />
                     <OrderCompanyDetails
                         v-if="data.user_type === 'company'"
                         :user="data" />
                 </div>
                 <OrderTotal @order="submitHandler"
+                    :addressError="addressError"
                     class="order__content-total" />
             </div>
         </div>
@@ -39,15 +41,24 @@ import { useAuthStore } from '~/store/auth';
 import { useCartStore } from '~/store/cart';
 import { useOrder } from '~/store/order';
 const user = useAuthStore()
+const { user: userA } = storeToRefs(useAuthStore())
 const { deliveryAddress } = storeToRefs(useOrder())
-const { data } = await useAuthFetch<UserCompany>('/api/profile', {
+const { data, refresh } = await useAuthFetch<UserCompany>('/api/profile', {
     method: 'get'
 })
+
+
 const cartId = useCookie('cartId')
 const receiveMethod = ref('')
 const cartStore = useCartStore()
-const router = useRouter()
+const addressError = ref(false)
 const submitHandler = async (paymentMethod: 'cash' | 'card' | 'non_cash') => {
+    addressError.value = false
+    if (!deliveryAddress.value) {
+        addressError.value = true
+        return
+
+    }
     const { data, status } = await useAuthFetch('/api/order', {
         method: 'post',
         body: {

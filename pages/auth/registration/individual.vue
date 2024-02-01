@@ -6,10 +6,6 @@
         <AuthIndividualRegistrationForm v-if="route.query.step === '1'"
             @goToNext="goToLocationForm" />
     </KeepAlive>
-    <KeepAlive>
-        <AuthIndividualRegistrationLoc @goBack="goUserForm"
-            v-if="route.query.step === '2'" />
-    </KeepAlive>
 </template>
 <script lang="ts" setup>
 definePageMeta({

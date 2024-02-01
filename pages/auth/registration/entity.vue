@@ -3,7 +3,7 @@
         <h3>Регистрация юридического лица</h3>
     </div>
     <KeepAlive>
-        <AuthIndividualRegistrationForm v-if="route.query.step === '1'"
+        <AuthCompanyUser v-if="route.query.step === '1'"
             @goToNext="goToCompanyForm" />
     </KeepAlive>
     <KeepAlive>

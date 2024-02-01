@@ -25,6 +25,8 @@
             <span>{{ (cartStore.totalPrice +
                 deliveryPrice).toLocaleString() }} ₸</span>
         </div>
+        <FormError class="order-total__error" v-if="addressError"
+            error-message="Необходимо добавить адрес" />
         <div class="order-total__actions">
             <VBtn v-if="user.user_type === 'individual'"
                 class="order-total__actions-online"
@@ -51,12 +53,20 @@ const userStore = useAuthStore()
 const { user } = storeToRefs(userStore)
 const cartStore = useCartStore()
 const emit = defineEmits(['order'])
+const props = defineProps<{
+    addressError: boolean
+}>()
 </script>
 <style lang="scss" scoped>
 .order-total {
     border-radius: 16px;
     background: white;
     padding: 24px;
+
+    &__error {
+        margin-top: 12px;
+    }
+
     // .order-total__title
 
     &__title {

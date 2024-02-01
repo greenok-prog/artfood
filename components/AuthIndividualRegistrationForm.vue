@@ -41,7 +41,7 @@
                 class="form__actions-back">
                 Назад</VBtn>
             <VBtn @click="submitHandler" class="form__actions-next">
-                Далее</VBtn>
+                Регистрация</VBtn>
         </div>
     </form>
 </template>
@@ -50,6 +50,7 @@ import { object, string } from 'yup';
 import { useAuthStore } from '~/store/auth';
 import { formatFetchErrors } from '~/utils/validation';
 const { setRegistration } = useAuthStore()
+const store = useAuthStore()
 const { registrationErrors } = storeToRefs(useAuthStore())
 const emit = defineEmits(['goToNext'])
 const schema = object({
@@ -91,9 +92,26 @@ const { handleSubmit, setErrors } = useForm({
 
 const { value: user } = useField<User>("user");
 
-const submitHandler = handleSubmit(() => {
-    setRegistration({ ...user.value, password_repeat: user.value.password })
-    emit('goToNext')
+
+const submitHandler = handleSubmit(async () => {
+
+    store.setRegistrationErrors(null)
+
+
+
+    try {
+        const res = await $fetch('/api/registration-individual', {
+            method: 'post',
+            body: { ...user.value, password_repeat: user.value.password }
+        })
+
+
+        await useRouter().push('/auth/registration/message')
+    } catch (e) {
+        console.log(e);
+
+    }
+
 })
 const backHandler = () => {
     return navigateTo('/auth/registration')
