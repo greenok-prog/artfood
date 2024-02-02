@@ -42,6 +42,9 @@
                     <div class="footer__contacts-block">
                         <p class="footer__contacts-block-title">Поддержка
                         </p>
+                        <p class="footer__item">
+                            Artfood777@mail.ru
+                        </p>
                         <NuxtLink
                             :to="`tel:${address.contact_store[0].phone_numbers}`">
                             <p>{{ address.contact_store[0].phone_numbers
@@ -137,6 +140,10 @@ const address = computed(() => {
 .footer {
     background-color: $main;
     padding-top: 90px;
+
+    &__item {
+        margin-bottom: 6px;
+    }
 
     &__inner {
         display: flex;

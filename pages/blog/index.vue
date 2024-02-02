@@ -1,8 +1,8 @@
 <template>
     <div class="container">
         <div class="blog">
-            <PathHistory :path="['Главная', 'Блог']" />
-            <h2 class="blog__title">Блог</h2>
+            <PathHistory :path="['Главная', 'Новости']" />
+            <h2 class="blog__title">Новости</h2>
             <BlogList :list="data.results" class="blog__list" />
             <!-- <div class="blog__more">
                 <VBtn class="blog__more-button">Еще статьи</VBtn>

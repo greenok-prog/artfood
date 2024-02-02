@@ -29,6 +29,7 @@
                     </div>
                     <div class="contacts__item-content">
                         <p>+7 (777) 920 - 91 - 82</p>
+                        <p>Artfood777@mail.ru</p>
                         <span>Пн - Пт с 9.00 - 18.00</span>
                     </div>
                 </div>
@@ -39,6 +40,7 @@
                     </div>
                     <div class="contacts__item-content">
                         <p>+7 (777) 920 - 91 - 82</p>
+                        <p>Artfood777@mail.ru</p>
                         <span>каждый день с 9.00 - 18.00</span>
                     </div>
                 </div>

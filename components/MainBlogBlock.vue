@@ -1,6 +1,6 @@
 <template>
     <div class="blog-block" v-if="data">
-        <ContentBlockWrap title="Блог" more-text="Все статьи"
+        <ContentBlockWrap title="Новости" more-text="Все новости"
             moreLink="/blog">
             <div class="blog-block__list">
                 <BlogCard :data="item" v-for="item in data?.results" />
