@@ -113,6 +113,7 @@ const { productIsFavorite } = storeToRefs(useFavoriteStore())
     @include atMd {
         padding: 0 10px;
         padding-bottom: 10px;
+
     }
 
 
@@ -269,6 +270,10 @@ const { productIsFavorite } = storeToRefs(useFavoriteStore())
     &__price {
         display: flex;
         flex-direction: column;
+
+        @include atMd {
+            height: 40px;
+        }
 
         &-block {
             display: flex;

@@ -3,7 +3,7 @@
         <h3>Восстановление пароля</h3>
         <VeeField name="login" v-slot="{ errorMessage }">
             <BaseInput v-model="login" :error-message="errorMessage"
-                placeholder="E-mail или телефон" />
+                placeholder="E-mail" />
         </VeeField>
         <VBtn>Восстановить пароль</VBtn>
     </form>

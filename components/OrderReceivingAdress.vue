@@ -31,7 +31,7 @@ const props = defineProps<{
 }>()
 const emit = defineEmits(['onAdd'])
 const { setAddress } = useOrder()
-const selectedAddress = ref(props.addresses[0] || null)
+const selectedAddress = ref(props.addresses[0])
 const formatedStreetAddress = computed(() => {
     if (selectedAddress.value) {
         return `г.${selectedAddress.value.city.name}, ул.${selectedAddress.value.street} ${selectedAddress.value.house_number}  ${selectedAddress.value.apartment_number ? ', квартира ' + selectedAddress.value.apartment_number : ''}`
@@ -40,7 +40,11 @@ const formatedStreetAddress = computed(() => {
     }
 })
 
-
+onMounted(() => {
+    if (props.addresses[0]) {
+        setAddress(props.addresses[0])
+    }
+})
 const { open, close } = useModal({
     component: DeliveryAddressModal,
     attrs: {

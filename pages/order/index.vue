@@ -21,8 +21,8 @@
                     <OrderInvoicePayment
                         v-if="data.user_type === 'company'" />
                     <OrderReceivingMethod @select-method="selectMethod" />
-                    <OrderReceivingAdress v-if="userA.addresses"
-                        :addresses="userA?.addresses" @onAdd="refresh" />
+                    <OrderReceivingAdress :addresses="data.addresses"
+                        @onAdd="refresh" />
                     <OrderUserDetails :user="data" />
                     <OrderCompanyDetails
                         v-if="data.user_type === 'company'"
@@ -43,9 +43,11 @@ import { useOrder } from '~/store/order';
 const user = useAuthStore()
 const { user: userA } = storeToRefs(useAuthStore())
 const { deliveryAddress } = storeToRefs(useOrder())
+const { setAddress } = useOrder()
 const { data, refresh } = await useAuthFetch<UserCompany>('/api/profile', {
     method: 'get'
 })
+
 
 
 const cartId = useCookie('cartId')
@@ -96,7 +98,10 @@ const selectMethod = (v: string) => {
 const navigateToCart = () => {
     return navigateTo('/cart')
 }
+
+
 onMounted(() => {
+
     if (!cartStore.cartLength) {
         return navigateTo('/cart')
     }

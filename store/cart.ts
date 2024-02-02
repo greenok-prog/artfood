@@ -1,4 +1,5 @@
 import type { ListProduct } from "~/types/api-schema";
+
 export interface IcartProduct {
   quantity_product: number;
   product: ListProduct;
