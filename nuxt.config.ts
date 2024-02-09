@@ -7,6 +7,7 @@ export default defineNuxtConfig({
     "nuxt-swiper",
     "@vee-validate/nuxt",
     "nuxt-rating",
+    "@nuxtjs/sitemap",
     [
       "nuxt-viewport",
       {
@@ -31,6 +32,9 @@ export default defineNuxtConfig({
       },
     ],
   ],
+  site: {
+    url: "https://artfood-shop.kz",
+  },
 
   swiper: {
     prefix: "Swiper",

@@ -31,6 +31,9 @@
                         <p>+7 (777) 920 - 91 - 82</p>
                         <p>Artfood777@mail.ru</p>
                         <span>Пн - Пт с 9.00 - 18.00</span>
+                        <span>Сб с 8.00 - 13.00</span>
+                        <span>В праздничные дни уточняйте по
+                            телефону</span>
                     </div>
                 </div>
                 <div class="contacts__item">
@@ -147,6 +150,8 @@ console.log(data.value);
         span {
             opacity: 0.6;
             font-size: 14px;
+            display: block;
+            margin-top: 4px;
         }
     }
 

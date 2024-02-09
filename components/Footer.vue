@@ -51,7 +51,10 @@
                             }}
                             </p>
                         </NuxtLink>
-                        <span>Пн - Пт с 9.00 - 18.00</span>
+                        <span>Пн - Пт с 9.00 - 19.00</span>
+                        <span>Сб с 8.00 - 13.00</span>
+                        <span>В праздничные дни уточняйте по
+                            телефону</span>
                     </div>
 
                 </div>
@@ -126,14 +129,6 @@ const { data: categories } = await useFetch('/api/popular-categories')
 const address = computed(() => {
     return addresses.value.results[0]
 })
-
-
-
-
-
-
-
-
 
 </script>
 <style lang="scss" scoped>
@@ -247,6 +242,8 @@ const address = computed(() => {
                 font-size: 14px;
                 color: white;
                 opacity: 0.6;
+                display: block;
+                margin-top: 4px;
             }
         }
     }
