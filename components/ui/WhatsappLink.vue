@@ -1,7 +1,8 @@
 <template>
 	<div class="whatsapp-link" aria-label="Chat on WhatsApp">
 		<NuxtLink to="https://wa.me/77472454399" target="_blank">
-			<img src="/whatsapp_icon.png" alt="whatsapp">
+			<img src="/whatsapp_icon.png" alt="whatsapp" width="70"
+				height="70">
 		</NuxtLink>
 
 

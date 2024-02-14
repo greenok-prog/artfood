@@ -147,7 +147,6 @@ const submit = handleSubmit(async () => {
         await useRouter().push('/auth/registration/message')
     } catch (e) {
         serverError.value = 'Ошибка при регистрации'
-        console.log(e.data.data);
 
         store.setRegistrationErrors(e.data.data)
     }

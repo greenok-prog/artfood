@@ -111,6 +111,7 @@ const { productIsFavorite } = storeToRefs(useFavoriteStore())
     padding-bottom: 14px;
     cursor: pointer;
     position: relative;
+    max-width: 255px;
     background: white;
 
     @include atMd {

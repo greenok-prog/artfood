@@ -73,7 +73,7 @@ import { useAddress } from '~/store/address';
 import { useAuthStore } from '~/store/auth';
 import { formatFetchErrors } from '~/utils/validation';
 const { cities } = storeToRefs(useAddress())
-const { setRegistration } = useAuthStore()
+const { setRegistration, setRegistrationErrors } = useAuthStore()
 
 interface CompanyInfo {
     bik: string,
@@ -140,6 +140,7 @@ const submitHandler = handleSubmit(() => {
         }
 
     })
+    setRegistrationErrors(null)
     emit('goToNext')
 
 })
