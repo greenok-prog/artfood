@@ -6,31 +6,17 @@
                 class="auth-layout__path" />
             <div class="auth-layout__block">
                 <div class="auth-layout__block-container">
-                    <NuxtLoadingIndicator />
                     <NuxtPage />
                 </div>
             </div>
         </main>
         <Footer class="footer" />
+        <MobileNavbar />
     </div>
-    <MobileNavbar />
 </template>
 <script lang="ts" setup>
-const router = useRouter()
-const pathText = computed(() => {
-    switch (router.currentRoute.value.path) {
-        case '/auth/registration':
-            return ['Регистрация']
-        case '/auth/registration/welcome':
-            return ['Личный кабинет', 'Успешно пройденная регистрация']
-        case '/auth/login':
-            return ['Вход в личный кабинет']
-        case '/auth/password-recovery':
-            return ['Личный кабинет', 'Восстановление пароля']
-        case '/auth/password-recovery/submit':
-            return ['Личный кабинет', 'Восстановление пароля']
-    }
-})
+
+
 </script>
 <style lang="scss" scoped>
 .auth-layout {

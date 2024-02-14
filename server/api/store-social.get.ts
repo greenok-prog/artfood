@@ -1,4 +1,3 @@
-import { useCookie } from "nuxt/app";
 import { useApi } from "~/composables/useApi";
 import ENDPOINTS from "~/constants/endpoints";
 

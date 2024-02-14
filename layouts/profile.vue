@@ -6,12 +6,12 @@
             <div class="container">
                 <div class="profile-layout__top">
                     <PathHistory :path="['Личный кабинет']" />
-                    <p class="profile-layout__top-link">Вы
+                    <!-- <p class="profile-layout__top-link">Вы
                         зарегистрированы,
                         как юридическое лицо.
                         <VLink type="underline" to="#">Переключиться на
                             физ лицо</VLink>
-                    </p>
+                    </p> -->
                 </div>
                 <div class="profile-layout__content">
 

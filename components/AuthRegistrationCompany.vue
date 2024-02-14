@@ -44,7 +44,7 @@
             </VeeField>
             <VeeField name="company.iik" v-slot="{ errorMessage }">
                 <BaseInput v-model="company.iik"
-                    :error-message="errorMessage" placeholder="ИИК *" />
+                    :error-message="errorMessage" placeholder="IBAN *" />
             </VeeField>
             <VeeField name="company.bank" v-slot="{ errorMessage }">
                 <BaseInput v-model="company.bank"

@@ -1,11 +1,8 @@
 <template>
     <div class="registration-individual">
         <h3>Регистрация физического лица</h3>
+        <AuthIndividualRegistrationForm @goToNext="goToLocationForm" />
     </div>
-    <KeepAlive>
-        <AuthIndividualRegistrationForm v-if="route.query.step === '1'"
-            @goToNext="goToLocationForm" />
-    </KeepAlive>
 </template>
 <script lang="ts" setup>
 definePageMeta({
@@ -20,11 +17,7 @@ const goUserForm = () => {
     return navigateTo('/auth/registration/individual?step=1')
 }
 
-onMounted(() => {
-    if (!route.query.step) {
-        router.push('/auth/registration/individual?step=1')
-    }
-})
+
 
 </script>
 

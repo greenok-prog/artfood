@@ -15,7 +15,8 @@
                 Юридическое лицо
             </button>
         </div>
-        <RegistrationTypeSelector @selectEntity="selectEntity"
+        <RegistrationTypeSelector v-if="activeType"
+            @selectEntity="selectEntity"
             @selectIndividual="selectIndividual"
             class="registration__selector" />
         <div class="registration__content" v-if="activeType === 'entity'">
@@ -53,15 +54,15 @@
             <p>У меня есть учетная запись. <VLink to="/auth/login"
                     type="underline">Войти</VLink>
             </p>
-            <VBtn @click="navigateToNextPage">Далее</VBtn>
+            <!-- <NuxtLink :to="navigateToNextPage"> -->
+            <VBtn @click="useRouter().push(navigateToNextPage)">
+                Далее</VBtn>
+            <!-- </NuxtLink>-->
         </div>
-        <!-- <AuthIndividualRegistrationForm
-            v-if="activeType === 'individual'" />
-        <AuthEntityRegistrationForm v-if="activeType === 'entity'" /> -->
+
     </div>
 </template>
 <script lang="ts" setup>
-import { ref } from 'vue';
 
 definePageMeta({
     layout: 'registration'
@@ -73,13 +74,13 @@ const selectEntity = () => {
 const selectIndividual = () => {
     activeType.value = 'individual'
 }
-const navigateToNextPage = () => {
+const navigateToNextPage = computed(() => {
     if (activeType.value === 'entity') {
-        return navigateTo('/auth/registration/entity?step=1')
+        return '/auth/registration/entity?step=1'
     } else {
-        return navigateTo('/auth/registration/individual?step=1')
+        return '/auth/registration/individual?step=1'
     }
-}
+})
 </script>
 <style scoped lang="scss">
 .registration {

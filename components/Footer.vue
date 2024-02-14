@@ -4,18 +4,19 @@
             <div class="footer__inner">
                 <div class="footer-block">
                     <Logo />
-                    <div class="footer__adress">
+                    <div v-if="address" class="footer__adress">
                         <h4>Адрес</h4>
                         <span>Казахстан, г.{{ address.city.name }}</span>
                         <p>ул. {{ address.street }} {{
                             address.house_number
                         }}</p>
                     </div>
-                    <div v-if="social" class="footer__social">
+                    <div class="footer__social">
                         <p>Мы в соц сетях</p>
+
                         <div v-if="social" class="footer__social-list">
                             <NuxtLink :to="link.url_network"
-                                v-for="link in social?.results"
+                                v-for=" link  in  social "
                                 :key="link.name">
                                 <VkSvg v-if="link.name === 'Vk'" />
                                 <InstagramSvg
@@ -29,15 +30,12 @@
                 <div class="footer__users">
                     <h4 class="footer__title">Покупателям</h4>
                     <div v-if="categories" class="footer__users-list">
-                        <NuxtLink
-                            v-for="category in categories.results.slice(0, 4)"
+                        <NuxtLink v-for=" category  in  categories "
                             :to="`/catalog?subcategory__category=${category.id}`">
                             {{ category.name }}</NuxtLink>
-
-
                     </div>
                 </div>
-                <div v-if="addresses?.results" class="footer__contacts">
+                <div v-if="address" class="footer__contacts">
                     <h4 class="footer__title">Контакты</h4>
                     <div class="footer__contacts-block">
                         <p class="footer__contacts-block-title">Поддержка
@@ -45,9 +43,9 @@
                         <p class="footer__item">
                             Artfood777@mail.ru
                         </p>
-                        <NuxtLink
-                            :to="`tel:${address.contact_store[0].phone_numbers}`">
-                            <p>{{ address.contact_store[0].phone_numbers
+                        <NuxtLink v-if="address.contact_store"
+                            :to="`tel:${address?.contact_store[0].phone_numbers}`">
+                            <p>{{ address?.contact_store[0].phone_numbers
                             }}
                             </p>
                         </NuxtLink>
@@ -68,7 +66,7 @@
                             <NuxtLink to="/contacts">Контакты</NuxtLink>
 
                         </div>
-                        <NuxtLink to="delivery-and-pickup"
+                        <NuxtLink to="/delivery-and-pickup"
                             class="footer__company-block">Доставка и
                             самовывоз</NuxtLink>
                         <NuxtLink to="/payment-and-delivery"
@@ -105,6 +103,9 @@
     </footer>
 </template>
 <script lang="ts" setup>
+import { useFooter } from '~/store/footer';
+
+
 interface ISocial {
     name: string,
     url_network: string
@@ -121,13 +122,27 @@ interface IAddress {
     }[],
     house_number: string
 }
-const { data: social } = await useFetch<{ results: ISocial[] }>('/api/store-social', {
-    method: 'get'
-})
-const { data: addresses } = await useFetch<{ results: IAddress[] }>('/api/store-addresses')
-const { data: categories } = await useFetch('/api/popular-categories')
-const address = computed(() => {
-    return addresses.value.results[0]
+const { getFooter } = useFooter()
+const { social, address, categories } = storeToRefs(useFooter())
+
+
+
+
+// const { data: social } = await useFetch<{ results: ISocial[] }>('/api/store-social', {
+//     method: 'get',
+
+// })
+// const { data: addresses } = await useFetch<{ results: IAddress[] }>('/api/store-addresses')
+// const { data: categories } = await useFetch('/api/popular-categories')
+
+
+// const address = computed(() => {
+//     return addresses.value.results[0]
+// })
+onMounted(async () => {
+    await getFooter()
+    console.log(social.value);
+
 })
 
 </script>

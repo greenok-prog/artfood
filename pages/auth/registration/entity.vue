@@ -1,20 +1,22 @@
 <template>
-    <div class="registration-individual">
-        <h3>Регистрация юридического лица</h3>
-    </div>
-    <KeepAlive>
-        <AuthCompanyUser v-if="route.query.step === '1'"
-            @goToNext="goToCompanyForm" />
-    </KeepAlive>
-    <KeepAlive>
+    <div>
+        <div class="registration-individual">
+            <h3>Регистрация юридического лица</h3>
+        </div>
+        <KeepAlive>
+            <AuthCompanyUser v-if="route.query.step === '1'"
+                @goToNext="goToCompanyForm" />
+        </KeepAlive>
+        <KeepAlive>
 
-        <AuthRegistrationCompany @goToNext="goToLocationForm"
-            @goBack="goUserForm" v-if="route.query.step === '2'" />
-    </KeepAlive>
-    <KeepAlive>
-        <AuthEntityRegistrationLoc @goBack="goToCompanyForm"
-            v-if="route.query.step === '3'" />
-    </KeepAlive>
+            <AuthRegistrationCompany @goToNext="goToLocationForm"
+                @goBack="goUserForm" v-if="route.query.step === '2'" />
+        </KeepAlive>
+        <KeepAlive>
+            <AuthEntityRegistrationLoc @goBack="goToCompanyForm"
+                v-if="route.query.step === '3'" />
+        </KeepAlive>
+    </div>
 </template>
 <script lang="ts" setup>
 definePageMeta({

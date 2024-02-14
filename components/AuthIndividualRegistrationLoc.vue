@@ -16,7 +16,7 @@
                     :name="`addresses[${index}].city`"
                     v-slot="{ errorMessage }">
                     <BaseDropdown placeholder="Город *" :options="cities"
-                        v-model="address.value.city"
+                        v-model="address.city"
                         :error-message="errorMessage" />
 
 
@@ -24,14 +24,14 @@
                 <VeeField :name="`addresses[${index}].street`"
                     v-slot="{ errorMessage }">
                     <BaseInput :error-message="errorMessage"
-                        v-model="address.value.street"
+                        v-model="address.street"
                         placeholder="Например: улица Абая 149/1 *" />
                 </VeeField>
 
                 <VeeField :name="`addresses[${index}].house_number`"
                     v-slot="{ errorMessage }">
                     <BaseInput :error-message="errorMessage"
-                        v-model="address.value.house_number"
+                        v-model="address.house_number"
                         placeholder="Номер дома *" />
                 </VeeField>
                 <div class="registration-loc__group">
@@ -40,7 +40,7 @@
                         :name="`addresses[${index}].apartment_number`"
                         v-slot="{ errorMessage }">
                         <BaseInput :error-message="errorMessage"
-                            v-model="address.value.apartment_number"
+                            v-model="address.apartment_number"
                             placeholder="Квартира *" />
                     </VeeField>
                     <VeeField name="address.floor">

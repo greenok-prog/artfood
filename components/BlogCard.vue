@@ -7,7 +7,7 @@
             <span class="blog-card__publish">{{ createdDate }}</span>
             <h4 class="blog-card__title">{{ data.theme }}
             </h4>
-            <p>{{ data.text }}</p>
+            <p v-html="data.text"></p>
 
         </div>
         <div class="blog-card__actions">

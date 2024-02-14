@@ -2,10 +2,10 @@
     <div class="auth-layout">
         <Header />
         <main class="auth-layout__main container">
-            <PathHistory :path="pathText" class="auth-layout__path" />
+            <PathHistory v-if="pathText" :path="pathText"
+                class="auth-layout__path" />
             <div class="auth-layout__block">
                 <div class="auth-layout__block-container">
-                    <NuxtLoadingIndicator />
                     <NuxtPage />
                 </div>
             </div>
