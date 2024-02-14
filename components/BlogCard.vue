@@ -5,14 +5,15 @@
             <img v-if="data.images[0]" :src="data.images[0].image" alt=""
                 class="blog-card__image">
             <span class="blog-card__publish">{{ createdDate }}</span>
-            <h4 class="blog-card__title">{{ data.theme }}
-            </h4>
+            <p class="blog-card__title">{{ data.theme }}
+            </p>
             <p v-html="data.text"></p>
 
         </div>
         <div class="blog-card__actions">
             <NuxtLink :to="`/blog/${data.id}`">Читать</NuxtLink>
-            <NuxtLink :to="`/blog/${data.id}`" class="blog-card__btn">
+            <NuxtLink :to="`/blog/${data.id}`" aria-label="Read more"
+                class="blog-card__btn">
                 <SliderArrowSvg />
             </NuxtLink>
         </div>

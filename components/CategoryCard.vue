@@ -7,7 +7,7 @@
                 {{ data.name }}
             </h4>
             <NuxtLink :to="`/catalog/categories/${data.id}`"
-                class="category-card__btn">
+                aria-label="Read more" class="category-card__btn">
                 <SliderArrowSvg />
             </NuxtLink>
         </div>

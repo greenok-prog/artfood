@@ -3,7 +3,7 @@
         <div class="search-input">
             <input class="search-input__input" @click="openHistory"
                 v-model="value" type="text" placeholder="Я хочу найти">
-            <button @click.prevent="searchHandler"
+            <button @click.prevent="searchHandler" aria-label="search"
                 class="search-input__icon"
                 :class="{ 'search-input__icon__active': value.length }">
                 <span>Искать</span>

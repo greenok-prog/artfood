@@ -7,6 +7,8 @@ export default defineNuxtConfig({
     "nuxt-swiper",
     "@vee-validate/nuxt",
     "nuxt-rating",
+    "@nuxtjs/sitemap",
+    "@nuxtjs/robots",
     [
       "nuxt-viewport",
       {
@@ -31,13 +33,26 @@ export default defineNuxtConfig({
       },
     ],
   ],
+  site: {
+    url: "https://artfood-shop.kz",
+  },
+  robots: {
+    UserAgent: "*",
+    Disallow: "",
+  },
   app: {
     head: {
+      htmlAttrs: {
+        lang: "ru",
+      },
       meta: [
         {
           content: "V18U93ldQUYUAstFtux-x9fLbGZTSYVUhqjdkdkYvok",
           name: "google-site-verification",
         },
+      ],
+      link: [
+        { rel: "icon", type: "image/png", href: "/logo.png", sizes: "180x180" },
       ],
     },
   },

@@ -1,10 +1,12 @@
 <template>
     <div class="slider">
         <div v-if="items.length > 5" class="slider__navigation">
-            <button @click="swiper.slidePrev()" class="slider-prev">
+            <button @click="swiper.slidePrev()" class="slider-prev"
+                aria-label="prev slide">
                 <SliderArrowSvg />
             </button>
-            <button @click="swiper.slideNext()" class="slider-next">
+            <button @click="swiper.slideNext()" class="slider-next"
+                aria-label="next slide">
                 <SliderArrowSvg />
             </button>
         </div>

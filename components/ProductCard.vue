@@ -2,7 +2,8 @@
     <div class="product-card">
         <div class="product-card__image">
             <NuxtLink v-if="data?.images[0]" :to="`/catalog/${data.id}`">
-                <img :src="data.images[0].image" alt="">
+                <img :src="data.images[0].image" width="250" height="350"
+                    :alt="data.name">
             </NuxtLink>
             <ProductBadge type="new" class="product-card__discount">
 
@@ -56,7 +57,8 @@
                 </div>
                 <button v-if="!productInCart(data.id)"
                     class="product-card__cart"
-                    @click="addTocart(props.data)">
+                    @click="addTocart(props.data)"
+                    aria-label="add to cart">
                     <CartSvg />
                 </button>
                 <button v-if="productInCart(data.id)"

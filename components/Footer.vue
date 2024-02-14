@@ -17,7 +17,7 @@
                         <div class="footer__social-list">
                             <NuxtLink :to="link.url_network"
                                 v-for=" link  in  social "
-                                :key="link.name">
+                                :key="link.name" aria-label="Check site">
                                 <VkSvg v-if="link.name === 'Vk'" />
                                 <InstagramSvg
                                     v-if="link.name === 'Instagram'" />

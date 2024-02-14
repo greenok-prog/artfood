@@ -1,4 +1,5 @@
 <template>
+    <h1 class="hide">Artfood - магазин кондитеских товаров</h1>
     <div class="container">
         <MainPromo v-if="discounts" class="promo"
             :discounts="discounts?.results" />
@@ -41,6 +42,10 @@ useHead({
 })
 </script>
 <style lang="scss" scoped>
+.hide {
+    display: none;
+}
+
 .promo {
     margin-top: 40px;
 

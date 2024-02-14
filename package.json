@@ -12,6 +12,7 @@
   },
   "devDependencies": {
     "@nuxt/devtools": "latest",
+    "@nuxtjs/sitemap": "^5.1.0",
     "nuxt": "^3.8.0",
     "nuxt-viewport": "^2.0.6",
     "swagger-typescript-api": "^13.0.3",
@@ -19,6 +20,7 @@
     "vue-router": "^4.2.5"
   },
   "dependencies": {
+    "@nuxtjs/robots": "^3.0.0",
     "@pinia/nuxt": "^0.5.1",
     "@vee-validate/nuxt": "^4.11.8",
     "axios": "^1.6.2",
