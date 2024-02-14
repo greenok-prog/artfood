@@ -11,10 +11,10 @@
                             address.house_number
                         }}</p>
                     </div>
-                    <div class="footer__social">
+                    <div v-if="social" class="footer__social">
                         <p>Мы в соц сетях</p>
 
-                        <div v-if="social" class="footer__social-list">
+                        <div class="footer__social-list">
                             <NuxtLink :to="link.url_network"
                                 v-for=" link  in  social "
                                 :key="link.name">
@@ -141,7 +141,6 @@ const { social, address, categories } = storeToRefs(useFooter())
 // })
 onMounted(async () => {
     await getFooter()
-    console.log(social.value);
 
 })
 

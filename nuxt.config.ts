@@ -31,7 +31,16 @@ export default defineNuxtConfig({
       },
     ],
   ],
-
+  app: {
+    head: {
+      meta: [
+        {
+          content: "V18U93ldQUYUAstFtux-x9fLbGZTSYVUhqjdkdkYvok",
+          name: "google-site-verification",
+        },
+      ],
+    },
+  },
   swiper: {
     prefix: "Swiper",
     styleLang: "scss",
