@@ -3,7 +3,7 @@
 
         <div class="blog-card__content">
             <img v-if="data.images[0]" :src="data.images[0].image" alt=""
-                class="blog-card__image">
+                class="blog-card__image" loading="lazy">
             <span class="blog-card__publish">{{ createdDate }}</span>
             <p class="blog-card__title">{{ data.theme }}
             </p>

@@ -1,11 +1,11 @@
 <template>
     <div class="category-card">
-        <img v-if="data.image" :src="data.image" alt=""
-            class="category-card__image">
+        <img v-if="data.image" :src="data.image" :alt="data.name"
+            class="category-card__image" loading="lazy">
         <div class="category-card__info">
-            <h4 class="category-card__name">
+            <p class="category-card__name">
                 {{ data.name }}
-            </h4>
+            </p>
             <NuxtLink :to="`/catalog/categories/${data.id}`"
                 aria-label="Read more" class="category-card__btn">
                 <SliderArrowSvg />

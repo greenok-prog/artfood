@@ -8,7 +8,7 @@
                     <NuxtLink class="partners-item"
                         :to="`/catalog?product_data__manufacturer=${item.id}`">
                         <img :src="item.logo" :alt="item.name" width="186"
-                            height="168">
+                            loading="lazy" height="168">
                     </NuxtLink>
                 </SwiperSlide>
             </Swiper>

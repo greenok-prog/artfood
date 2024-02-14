@@ -42,16 +42,16 @@
                     :error-message="errorMessage"
                     placeholder="БИН/ИИН *" />
             </VeeField>
-            <VeeField name="company.iik" v-slot="{ errorMessage }">
-                <BaseInput v-model="company.iik"
+            <VeeField name="company.bank" v-slot="{ errorMessage }">
+                <BaseInput v-model="company.bank"
                     :error-message="errorMessage" placeholder="IBAN *" />
             </VeeField>
-            <VeeField name="company.bank" v-slot="{ errorMessage }">
+            <!-- <VeeField name="company.bank" v-slot="{ errorMessage }">
                 <BaseInput v-model="company.bank"
                     :error-message="errorMessage" placeholder="Банк *" />
                 <p>Банк, по которому будет производиться оплата компании
                 </p>
-            </VeeField>
+            </VeeField> -->
             <VeeField name="company.bik" v-slot="{ errorMessage }">
 
                 <BaseInput v-model="company.bik"
@@ -94,7 +94,7 @@ const schema = object({
     company: object({
         bank: string().required('Обязательное поле'),
         bin_iin: string().required('Обязательное поле'),
-        iik: string().required('Обязательное поле'),
+
         company_name: string().required('Обязательное поле'),
         bik: string().required('Обязательное поле'),
         office_number: string().required('Обязательное поле'),
@@ -128,7 +128,7 @@ const submitHandler = handleSubmit(() => {
     setRegistration({
         bik: company.value.bik,
         bank: company.value.bank,
-        iik: company.value.iik,
+        iik: company.value.bank,
         bin_iin: company.value.bin_iin,
         company_name: company.value.company_name,
         company_address: {

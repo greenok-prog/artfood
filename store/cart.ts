@@ -78,7 +78,9 @@ export const useCartStore = defineStore("cart", {
       const formatedCart = this.existenceProducts.map((el) => {
         return { quantity_product: el.quantity_product, id: el.product.id };
       });
-      const cartId = useCookie("cartId");
+      const cartId = useCookie("cartId", {
+        maxAge: 864000,
+      });
       const { data, execute } = await useAuthFetch("/api/cart-add", {
         method: "post",
         body: {

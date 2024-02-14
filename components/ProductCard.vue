@@ -3,7 +3,7 @@
         <div class="product-card__image">
             <NuxtLink v-if="data?.images[0]" :to="`/catalog/${data.id}`">
                 <img :src="data.images[0].image" width="250" height="350"
-                    :alt="data.name">
+                    :alt="data.name" loading="lazy">
             </NuxtLink>
             <ProductBadge type="new" class="product-card__discount">
 
@@ -63,7 +63,8 @@
                 </button>
                 <button v-if="productInCart(data.id)"
                     class="product-card__cart product-card__cart_active"
-                    @click="removeFromcart(props.data)">
+                    @click="removeFromcart(props.data)"
+                    aria-label="remove from cart">
                     <CartSvg />
                 </button>
                 <div class="product-card__cart_mini">
@@ -225,6 +226,8 @@ const { productIsFavorite } = storeToRefs(useFavoriteStore())
 
         img {
             max-height: 120px;
+            height: 100%;
+            width: 100%;
             object-fit: cover;
         }
     }

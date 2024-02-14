@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div v-if="address" class="footer__contacts">
-                    <h4 class="footer__title">Контакты</h4>
+                    <span class="footer__title">Контакты</span>
                     <div class="footer__contacts-block">
                         <p class="footer__contacts-block-title">Поддержка
                         </p>

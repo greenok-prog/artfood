@@ -7,7 +7,7 @@
             </p>
         </div>
         <div class="about__right">
-            <img src="/about-creative.png" alt="">
+            <img src="/about-creative.png" alt="Кондитеры" loading="lazy">
         </div>
     </div>
 </template>

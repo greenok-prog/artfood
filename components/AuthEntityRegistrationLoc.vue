@@ -124,7 +124,7 @@ const navigateToBack = () => {
     return navigateTo('/auth/registration/entity?step=2')
 }
 const submit = handleSubmit(async () => {
-
+    store.setRegistrationErrors(null)
     const fetchData = {
         ...store.registrationUser,
         addresses: addresses.value.map(el => {
@@ -136,7 +136,7 @@ const submit = handleSubmit(async () => {
             second_name: store.registrationUser.second_name
         }
     }
-    store.setRegistrationErrors(null)
+
     try {
         const res = await $fetch('/api/registration-company', {
             method: 'post',
