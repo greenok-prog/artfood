@@ -10,7 +10,9 @@
         <div v-for="(el, index) in activeCatalog.categories"
           :key="index">
 
-          <h5 class="catalog-items__list-title">{{ el.name }}</h5>
+          <NuxtLink @click="emit('closeModal')"
+            :to="`/catalog?subcategory__category=${el.id}`"
+            class="catalog-items__list-title">{{ el.name }}</NuxtLink>
           <p @click="onSelectSubcategory(el.id, subcategory.id)"
             v-for="subcategory in el.subcategories"
             class="catalog-items__list-unit">{{ subcategory.name }}
@@ -37,6 +39,8 @@ const onSelectSubcategory = (category: number, subcategory: number) => {
   emit('closeModal')
   router.push(`/catalog?subcategory=${subcategory}&subcategory__category=${category}`)
 }
+
+
 </script>
 
 <style lang="scss" scoped>

@@ -1,6 +1,6 @@
 <template>
     <div class="product-card">
-        <div class="product-card__image">
+        <NuxtLink class="product-card__image" :to="`/catalog/${data.id}`">
             <NuxtLink v-if="data?.images[0]" :to="`/catalog/${data.id}`">
                 <img :src="data.images[0].image" width="250" height="350"
                     :alt="data.name" loading="lazy">
@@ -15,7 +15,7 @@
             <FavoriteSvg v-if="productIsFavorite(data.id)"
                 @click.prevent="removeFromFavorite(data)"
                 class="product-card__fav product-card__fav_active" />
-        </div>
+        </NuxtLink>
         <div class="product-card__info">
             <ExistanceStatus :existance="data.existence" />
             <NuxtLink :to="`/catalog/${data.id}`"

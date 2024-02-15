@@ -109,11 +109,6 @@ const submitHandler = handleSubmit(async () => {
         await useRouter().push('/auth/registration/message')
     } catch (e) {
         setErrors(formatFetchErrors(e.data.data, 'user'))
-        console.log(formatFetchErrors(e.data.data, 'user'));
-
-        // console.log(e.data.data);
-
-        // setErrors()
 
     }
 
