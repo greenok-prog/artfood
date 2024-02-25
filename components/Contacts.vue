@@ -14,7 +14,7 @@
                 <div class="contacts__item">
                     <div class="contacts__item-title">
                         <LocationSvg />
-                        <h2>Адресс</h2>
+                        <h2>Адрес</h2>
                     </div>
                     <div class="contacts__item-content">
                         <p>Казахстан, г.Алматы</p>

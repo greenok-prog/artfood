@@ -2,8 +2,13 @@
     <div class="product-card">
         <NuxtLink class="product-card__image" :to="`/catalog/${data.id}`">
             <NuxtLink v-if="data?.images[0]" :to="`/catalog/${data.id}`">
-                <img :src="data.images[0].image" width="250" height="350"
-                    :alt="data.name" loading="lazy">
+                <img 
+                    :src="props.includeUrl ? `https://api.artfood-shop.kz${data.images[0].image}` : data.images[0].image" 
+                    width="250" 
+                    height="350"
+                    :alt="data.name" 
+                    loading="lazy"
+                >
             </NuxtLink>
             <ProductBadge type="new" class="product-card__discount">
 
@@ -90,6 +95,7 @@ import type { ListProduct } from '~/types/api-schema';
 
 const props = defineProps<{
     data: ListProduct
+    includeUrl? : boolean,
 }>()
 
 const { addToFavorite, removeFromFavorite } = useFavoriteStore()

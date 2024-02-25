@@ -4,8 +4,7 @@
             Поддержка
         </h3>
         <div class="support__block">
-            <h4 class="support__block-title">Чтобы написать в поддержку,
-                обратитесь по номерам:</h4>
+            <h4 class="support__block-title">Контактные номера для обращения в службу поддержки:</h4>
             <div class="support__block-phones">
                 <span>+7 (727) 743-38-78</span>
                 <span>+7 (707) 743-39-79</span>

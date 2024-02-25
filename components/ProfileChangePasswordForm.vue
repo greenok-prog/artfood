@@ -12,17 +12,20 @@
                 <label class="change-password__label">
                     Новый пароль
                 </label>
-                <PasswordInput v-model="password"
-                    :error-message="errorMessage"
-                    class="change-password__input" />
+                <PasswordInput 
+                  v-model="password"
+                  :error-message="errorMessage"
+                  class="change-password__input" 
+                />
             </VeeField>
-            <VBtn class="change-password__button">Сохранить</VBtn>
+            <VBtn @click="submitHandler" class="change-password__button">Сохранить</VBtn>
         </form>
     </div>
 </template>
 <script lang="ts" setup>
 import { object, string } from 'yup';
 
+const router = useRouter()
 
 const { handleSubmit } = useForm({
     validationSchema: object({
@@ -43,7 +46,7 @@ const submitHandler = handleSubmit(async () => {
         }
     })
     if (status.value === 'success') {
-        return
+        router.push('/user')
     }
     else {
         console.log(error.value?.data.data);

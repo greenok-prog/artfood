@@ -7,9 +7,10 @@
     </div>
 </template>
 <script lang="ts" setup>
-defineProps<{
-    path: string[]
-}>()
+
+const props = defineProps<{
+  path: string[]
+}>();
 
 </script>
 <style lang="scss" scoped>

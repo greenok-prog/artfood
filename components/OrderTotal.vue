@@ -37,10 +37,10 @@
                 Оплатить заказ при получении</VBtn>
         </div>
         <p class="order-total__message">Нажимая на кнопку, вы соглашаетесь
-            с <VLink to="#" type="underline">
+            с <VLink :to="'/privacy-policy'" type="underline">
                 Условиями обработки персональных данных
             </VLink>,
-            а также с <VLink to="#" type="underline">Условиями продажи
+            а также с <VLink :to="'/return-policy'" type="underline">Условиями продажи
             </VLink>
         </p>
     </div>

@@ -1,7 +1,6 @@
 <template>
     <ProfileWrapper>
         <template #default="{ back }">
-
             <div class="profile-addresses">
                 <ProfileAdresses />
             </div>

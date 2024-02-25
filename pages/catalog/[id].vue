@@ -16,13 +16,22 @@
                 :rating="product?.rating" :reviews="reviews"
                 class="product-detail__reviews" />
             <div class="product-detail__bottom">
-                <ContentBlockWrap title="Вы недавно смотрели"
-                    :title-size="28">
+                <ContentBlockWrap 
+                  title="Вы недавно смотрели"
+                  :title-size="28"
+                  v-if="state.getViewed.length > 0"
+                >
                     <ProductSlider :products="state.getViewed" />
                 </ContentBlockWrap>
-                <ContentBlockWrap v-if="similar?.products"
-                    title="Рекомендуем вам" :title-size="28">
-                    <ProductSlider :products="similar?.products" />
+                <ContentBlockWrap 
+                  v-if="similar?.products"
+                  title="Рекомендуем вам" 
+                  :title-size="28"
+                >
+                    <ProductSlider 
+                      :includeUrl="true" 
+                      :products="similar?.products" 
+                    />
                 </ContentBlockWrap>
             </div>
         </div>

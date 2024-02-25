@@ -4,11 +4,7 @@
             <PathHistory
                 :path="['Главная', 'Часто задаваемые вопросы']" />
             <div class="faq__header">
-                <h2 class="faq__title">Часто задаваемые вопросы
-                </h2>
-                <VBtn class="faq__button">
-                    Задать свой вопрос
-                </VBtn>
+                <h2 class="faq__title">Часто задаваемые вопросы</h2>
             </div>
             <div class="faq__list">
                 <div class="faq__list-item">
@@ -29,8 +25,6 @@
                     Задать свой вопрос
                 </VBtn>
             </div>
-
-
         </div>
     </div>
 </template>

@@ -4,10 +4,6 @@
             1. Способ получения
         </template>
         <template #icon>
-            <div class="order-receiving__city">
-                <NavigationSvg />
-                в г.Алматы
-            </div>
         </template>
         <div class="order-receiving">
             <div class="order-receiving__pickup">

@@ -1,13 +1,22 @@
 <template>
     <div class="category-card">
-        <img v-if="data.image" :src="data.image" :alt="data.name"
-            class="category-card__image" loading="lazy">
+        <img 
+          v-if="data.image" 
+          :src="data.image" 
+          :alt="data.name"
+          class="category-card__image" 
+          loading="lazy"
+          @click="router.push({path: `/catalog/categories/${data.id}`})"
+        >
         <div class="category-card__info">
             <p class="category-card__name">
                 {{ data.name }}
             </p>
-            <NuxtLink :to="`/catalog/categories/${data.id}`"
-                aria-label="Read more" class="category-card__btn">
+            <NuxtLink 
+              :to="`/catalog/categories/${data.id}`"
+              aria-label="Read more" 
+              class="category-card__btn"
+            >
                 <SliderArrowSvg />
             </NuxtLink>
         </div>
@@ -19,6 +28,8 @@ import type { Category } from '~/types/api-schema';
 const props = defineProps<{
     data: Category
 }>()
+
+const router = useRouter();
 </script>
 <style lang="scss" scoped>
 .category-card {
