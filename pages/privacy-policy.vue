@@ -2,7 +2,11 @@
     <div class="container">
         <div class="privacy-policy">
             <PathHistory
-                :path="['Главная', 'Политика конфиденциальности данных']" />
+              :path="[
+                {name:'Главная', url: '/'}, 
+                {name:'Политика конфиденциальности данных', url: '/privacy-policy'}
+              ]" 
+            />
             <h2 class="privacy-policy__title">Политика конфиденциальности
                 данных</h2>
             <div v-if="data.results.length" class="privacy-policy__text"

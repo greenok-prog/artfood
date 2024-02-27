@@ -1,9 +1,13 @@
 <template>
     <div class="product-detail">
         <div class="container">
-
             <PathHistory class="product-detail__history"
-                :path="['Главная', 'Категории', product?.subcategory.name, product.name]" />
+                :path="[
+                  {name:'Главная', url: '/'}, 
+                  {name:'Категории', url: '/catalog/categories'}, 
+                  {name:product?.subcategory.name, url: `/catalog/categories/${route.params.id}`}
+                ]" 
+                />
 
             <div class="product-detail__content">
                 <ProductDetailsInfo v-if="product"

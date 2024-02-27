@@ -1,8 +1,13 @@
 <template>
     <div class="container">
         <div class="contacts">
-            <PathHistory class="contacts__path"
-                :path="['Главная', 'Контакты']" />
+            <PathHistory 
+              class="contacts__path"
+              :path="[
+                {name:'Главная', url: '/'}, 
+                {name:'Контакты', url: '/contacts'}
+               ]" 
+            />
             <Contacts />
         </div>
     </div>

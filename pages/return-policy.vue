@@ -1,7 +1,12 @@
 <template>
     <div class="container">
         <div class="return-policy">
-            <PathHistory :path="['Главная', 'Условия возврата']" />
+            <PathHistory 
+              :path="[
+                {name:'Главная', url: '/'}, 
+                {name:'Условия возврата', url: '/return-policy'}
+               ]" 
+            />
             <h2 class="return-policy__title">Условия возврата
             </h2>
             <p v-if="data.results.length" class="return-policy__text"

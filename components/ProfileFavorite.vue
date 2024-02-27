@@ -4,7 +4,9 @@
             <h2>Список желаний ({{ store.favoriteCount }})</h2>
             <div class="favorite__header-right">
                 <SearchInput v-model="searchValue" :history="false" />
-                <VBtn>Скачать каталог</VBtn>
+                <a href="/catalog.pdf" download>
+                  <VBtn class="catalog-list__download">Скачать каталог</VBtn>
+                </a>
             </div>
         </div>
         <div class="favorite__list">

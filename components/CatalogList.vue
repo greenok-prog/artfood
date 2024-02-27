@@ -11,8 +11,7 @@
                     товара</span>
             </div>
             <a href="/catalog.pdf" download>
-                <VBtn class="catalog-list__download">Скачать каталог
-                </VBtn>
+              <VBtn class="catalog-list__download">Скачать каталог</VBtn>
             </a>
         </div>
         <div class="catalog-list__filter-mini">

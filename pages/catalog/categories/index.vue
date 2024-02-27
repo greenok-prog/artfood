@@ -2,7 +2,11 @@
     <div class="container">
         <div class="categories">
             <PathHistory class="categories__path"
-                :path="['Главная', 'Категории']" />
+              :path="[
+                {name:'Главная', url: '/'} ,
+                {name:'Категории', url: '/catalog/categories'}
+              ]" 
+            />
             <h2 class="categories__title">Категории</h2>
             <CategoryList class="categories__list"
                 :categories="data.results" />

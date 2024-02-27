@@ -1,7 +1,12 @@
 <template>
     <div class="sitemap">
         <div class="container">
-            <PathHistory :path="['Главная', 'Карта сайта']" />
+            <PathHistory 
+              :path="[
+                {name:'Главная', url: '/'}, 
+                {name:'Карта сайта', url: '/sitemap'}
+              ]" 
+            />
             <h2 class="sitemap__title">Карта сайта</h2>
             <div class="sitemap__content">
                 <div class="sitemap__item">

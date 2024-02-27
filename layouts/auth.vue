@@ -2,8 +2,11 @@
     <div class="auth-layout">
         <Header />
         <main class="auth-layout__main container">
-            <PathHistory v-if="pathText" :path="pathText"
-                class="auth-layout__path" />
+            <PathHistory 
+              v-if="pathText" 
+              :path="pathText"
+              class="auth-layout__path" 
+            />
             <div class="auth-layout__block">
                 <div class="auth-layout__block-container">
                     <NuxtPage />
@@ -16,23 +19,24 @@
     <MobileNavbar />
 </template>
 <script lang="ts" setup>
-const router = useRouter()
+const router = useRouter();
+
 const pathText = computed(() => {
     switch (router.currentRoute.value.path) {
         case '/auth/registration':
-            return ['Регистрация']
+            return [{name: 'Регистрация', url: '/auth/registration'}]
         case '/auth/registration/welcome':
-            return ['Личный кабинет', 'Успешно пройденная регистрация']
+            return [{name:'Личный кабинет', url: '/user'}, {name:'Успешно пройденная регистрация', url: '/auth/registration/welcome'}]
         case '/auth/login':
-            return ['Вход в личный кабинет']
+            return [{name: 'Вход в личный кабинет', url: '/auth/login'}]
         case '/auth/password-recovery':
-            return ['Личный кабинет', 'Восстановление пароля']
+            return [{name: 'Личный кабинет', url: '/auth/login'}, {name:'Восстановление пароля', url: '/auth/password-recovery'}]
         case '/auth/password-recovery/submit':
-            return ['Личный кабинет', 'Восстановление пароля']
+            return [{name: 'Личный кабинет', url: '/auth/login'}, {name:'Восстановление пароля', url:'/auth/password-recovery/submit'}]
         case '/auth/password-recovery/change-password':
-            return ['Личный кабинет', 'Восстановление пароля']
+            return [{name:'Личный кабинет', url: '/auth/login'}, {name:'Восстановление пароля', url:'/auth/password-recovery/change-password'}]
     }
-})
+});
 </script>
 <style lang="scss" scoped>
 .auth-layout {

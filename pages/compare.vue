@@ -1,7 +1,12 @@
 <template>
 	<div class="container">
 		<div class="compare">
-			<PathHistory :path="['Личный кабинет', 'Сравнение']" />
+			<PathHistory 
+			  :path="[
+				{name:'Личный кабинет', url: '/user'}, 
+				{name:'Сравнение', url: '/compare'}
+			   ]" 
+			/>
 			<CompareHeader :count="compareCount" @clear="clearCompare" />
 			<article v-if="compareCount > 0" class="compare__main">
 				<CompareSidebar :products="compare"

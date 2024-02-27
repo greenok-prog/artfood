@@ -2,7 +2,11 @@
     <div class="faq">
         <div class="container">
             <PathHistory
-                :path="['Главная', 'Часто задаваемые вопросы']" />
+              :path="[
+                {name:'Главная', url: '/'}, 
+                {name:'Часто задаваемые вопросы', url: '/faq'}
+              ]" 
+            />
             <div class="faq__header">
                 <h2 class="faq__title">Часто задаваемые вопросы</h2>
             </div>

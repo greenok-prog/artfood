@@ -1,7 +1,12 @@
 <template>
     <div class="container">
         <div class="blog">
-            <PathHistory :path="['Главная', 'Новости']" />
+            <PathHistory 
+              :path="[
+                {name:'Главная', url: '/'}, 
+                {name:'Новости', url: '/blog'}
+              ]" 
+            />
             <h2 class="blog__title">Новости</h2>
             <BlogList :list="data.results" class="blog__list" />
             <!-- <div class="blog__more">

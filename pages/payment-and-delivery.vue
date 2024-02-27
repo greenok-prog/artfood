@@ -2,7 +2,11 @@
 	<div class="container">
 		<div class="delivery-and-pickup-policy">
 			<PathHistory
-				:path="['Главная', 'Условия оплаты и доставки']" />
+			  :path="[
+				{name:'Главная', url: '/'}, 
+				{name:'Условия оплаты и доставки', url: '/payment-and-delivery'}
+			  ]" 
+			/>
 			<h2 class="delivery-and-pickup-policy__title">Условия оплаты и
 				доставки</h2>
 			<div v-if="data.results"

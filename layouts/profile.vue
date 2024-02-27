@@ -5,7 +5,11 @@
         <main class="profile-layout__main">
             <div class="container">
                 <div class="profile-layout__top">
-                    <PathHistory :path="['Личный кабинет']" />
+                    <PathHistory 
+                      :path="[
+                        {name:'Личный кабинет', url: '/user'}
+                      ]" 
+                    />
                     <!-- <p class="profile-layout__top-link">Вы
                         зарегистрированы,
                         как юридическое лицо.

@@ -4,7 +4,11 @@
         <main class="profile-layout__main">
             <div class="container">
                 <div class="profile-layout__top">
-                    <PathHistory :path="['Личный кабинет']" />
+                    <PathHistory 
+                      :path="[
+                        {name:'Личный кабинет', url: '/user'}
+                      ]" 
+                    />
                     <!-- <p class="profile-layout__top-link">Вы
                         зарегистрированы,
                         как юридическое лицо.
@@ -40,13 +44,13 @@ const { $viewport } = useNuxtApp()
 const isShowPage = ref(true)
 const onProfileLinkClick = (link) => {
     isShowPage.value = true
-}
+};
 const onBackClick = () => {
     isShowPage.value = false
-}
+};
 const isMobile = computed(() => {
     return $viewport.isLessThan('tablet')
-})
+});
 
 </script>
 <style lang="scss" >

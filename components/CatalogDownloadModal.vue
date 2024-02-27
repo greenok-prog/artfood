@@ -9,9 +9,11 @@
         <p class="catalog-download-modal__title">
             Скачайте каталог
         </p>
-        <VBtn class="catalog-download-modal__button">Скачать каталог
+        <a href="/catalog.pdf" download>
+          <VBtn class="catalog-download-modal__button">Скачать каталог
             <DownloadSvg />
-        </VBtn>
+          </VBtn>
+         </a>
     </VueFinalModal>
 </template>
 

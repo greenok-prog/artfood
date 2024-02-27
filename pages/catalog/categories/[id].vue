@@ -1,7 +1,12 @@
 <template>
     <div class="container">
         <PathHistory class="category__path"
-            :path="['Главная', 'Категории', data.name]" />
+            :path="[
+              {name:'Главная', url: '/'}, 
+              {name:'Категории', url: '/catalog/categories'}, 
+              {name: data.name, url: `/catalog/categories/${route.params.id}`},
+            ]" 
+        />
         <div class="category">
             <NuxtLink to="/catalog/categories" class="category__back">
                 <ProfileNavbarIconSvg />

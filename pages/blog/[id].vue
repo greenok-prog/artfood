@@ -1,7 +1,13 @@
 <template>
     <div class="blog-item">
         <div class="container">
-            <PathHistory v-if="data" :path="['Главная', data?.theme]" />
+            <PathHistory 
+              v-if="data" 
+              :path="[
+                {name:'Главная', url: '/'}, 
+                {name:data?.theme, url: `/blog/${$route.params.id}`}
+              ]" 
+            />
             <PreviousPageLink class="blog-item__back" to="/blog" />
             <BlogInfoBlock v-if="data" :blog="data"
                 class="blog-item__info" />

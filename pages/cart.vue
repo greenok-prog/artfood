@@ -2,8 +2,13 @@
 <template>
     <div class="cart">
         <div class="container">
-            <PathHistory class="cart__path"
-                :path="['Главная', 'Корзина']" />
+            <PathHistory 
+              class="cart__path"
+              :path="[
+                {name:'Главная', url: '/'}, 
+                {name:'Корзина', url: '/cart'}
+              ]" 
+            />
             <div class="cart__header">
                 <h2 class="cart__title">Корзина</h2>
                 <!-- <VCheckbox v-model="selectAll">

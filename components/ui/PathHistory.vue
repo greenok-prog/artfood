@@ -1,17 +1,35 @@
 <template>
     <div class="path-history">
-        <HomeSvg /> <span v-for="item in path" :key="item">
+        <HomeSvg 
+          @click="$router.push({path: '/'})" 
+          class="path-item"
+        /> 
+        <span v-for="(item, index) in path" :key="index">
             <PathArrowSvg />
-            <p>{{ item }}</p>
+            <p 
+              class="path-item__link" 
+              :class="index+1 === path.length ? 'path-item__link-current' : ''"
+              @click="moveToHistoryUrl(index, item.url)"
+            >
+              {{ item.name }}
+            </p>
         </span>
     </div>
 </template>
+
 <script lang="ts" setup>
+import { useRouter } from '#app';
 
 const props = defineProps<{
-  path: string[]
+  path: any[]
 }>();
+const router = useRouter();
 
+const moveToHistoryUrl = (list: number, url: string): void => {
+  if(list + 1 != props.path.length) {
+    router.push({ path: url });
+  };
+};
 </script>
 <style lang="scss" scoped>
 .path-history {
@@ -28,6 +46,22 @@ const props = defineProps<{
         align-items: center;
         gap: 3px;
 
+    }
+}
+.path-item {
+    cursor: pointer;
+}
+.path-item__link-current {
+    color:black
+}
+.path-item__link {
+    box-sizing: border-box;
+    margin-bottom: 1px;
+    cursor: pointer;
+    &:hover {
+        border-bottom: 1px solid #737781;
+        box-sizing: border-box;
+        margin-bottom: 0px;
     }
 }
 </style>

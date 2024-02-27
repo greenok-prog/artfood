@@ -1,7 +1,12 @@
 <template>
     <div class="container">
         <div class="delivery-and-pickup-policy">
-            <PathHistory :path="['Главная', 'Доставка и самовывоз']" />
+            <PathHistory 
+              :path="[
+                {name:'Главная', url: '/'}, 
+                {name:'Доставка и самовывоз', url: '/delivery-and-pickup'}
+              ]" 
+            />
             <h2 class="delivery-and-pickup-policy__title">Доставка и
                 самовывоз</h2>
             <div class="delivery-and-pickup-policy__text"></div>

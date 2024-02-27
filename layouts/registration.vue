@@ -2,8 +2,12 @@
     <div class="auth-layout">
         <Header />
         <main class="auth-layout__main container">
-            <PathHistory :path="['Регистрация']"
-                class="auth-layout__path" />
+            <PathHistory 
+              :path="[
+                {name:'Регистрация', url: '/auth/registration'}
+               ]"
+              class="auth-layout__path" 
+            />
             <div class="auth-layout__block">
                 <div class="auth-layout__block-container">
                     <NuxtPage />

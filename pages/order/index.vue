@@ -2,9 +2,14 @@
     <div class="order">
         <div class="container">
             <div class="order__top">
-                <PathHistory class="order__path"
-                    :path="['Главная', 'Корзина', 'Оформление заказа']" />
-
+                <PathHistory 
+                  class="order__path"
+                  :path="[
+                    {name:'Главная', url: '/'}, 
+                    {name:'Корзина', url: '/cart'}, 
+                    {name:'Оформление заказа', url: '/order'},
+                  ]" 
+                />
             </div>
             <div class="order__header">
                 <ProfileBack class="order__header-back"
