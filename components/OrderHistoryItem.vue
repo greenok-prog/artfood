@@ -46,19 +46,19 @@ import CancellationOrderModal from '~/components/CancellationOrderModal.vue'
 import type { GetOrder } from '~/types/api-schema';
 const props = defineProps<{
     order: GetOrder
-}>()
+}>();
 
 const orderImages = computed(() => {
     return props.order.order_items.map(el => el.product.images)[0]
-})
+});
 
 
 const totalPrice = computed(() => {
     return Number(props.order.total_price).toLocaleString()
-})
+});
 const orderDate = computed(() => {
     return formatDate(props.order.date_created)
-})
+});
 
 // TODO: Функция "Повторить заказ"
 

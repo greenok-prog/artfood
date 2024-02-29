@@ -13,7 +13,7 @@
                 </button>
             </div>
             <NuxtLink class="delivery-address-modal__add"
-                to="/user/address-add">
+                to="/user/address-add" v-if="user.addresses.length != 3">
                 <AddSvg /> Добавить новый адрес
             </NuxtLink>
             <div class="delivery-address-modal__list"

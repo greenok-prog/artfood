@@ -86,6 +86,9 @@ const login = handleSubmit(async () => {
         id.value = VueJwtDecode.decode(res.access).user_id
         localStorage.setItem('userId', VueJwtDecode.decode(res.access).user_id)
 
+
+        const cartId = useCookie("cartId");
+        
         return useRouter().push('/user')
     } catch (e) {
 

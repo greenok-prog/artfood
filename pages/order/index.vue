@@ -33,9 +33,11 @@
                         v-if="data.user_type === 'company'"
                         :user="data" />
                 </div>
-                <OrderTotal @order="submitHandler"
-                    :addressError="addressError"
-                    class="order__content-total" />
+                <OrderTotal 
+                  @order="submitHandler"
+                  :addressError="addressError"
+                  class="order__content-total" 
+                />
             </div>
         </div>
     </div>
@@ -58,7 +60,7 @@ const { data, refresh } = await useAuthFetch<UserCompany>('/api/profile', {
 const cartId = useCookie('cartId')
 const receiveMethod = ref('')
 const cartStore = useCartStore()
-const addressError = ref(false)
+const addressError = ref(false);
 const submitHandler = async (paymentMethod: 'cash' | 'card' | 'non_cash') => {
     addressError.value = false
     if (!deliveryAddress.value) {
@@ -94,15 +96,15 @@ const submitHandler = async (paymentMethod: 'cash' | 'card' | 'non_cash') => {
         }
     }
 
-}
+};
 
 const selectMethod = (v: string) => {
     receiveMethod.value = v
-}
+};
 
 const navigateToCart = () => {
     return navigateTo('/cart')
-}
+};
 
 
 onMounted(() => {
@@ -110,7 +112,7 @@ onMounted(() => {
     if (!cartStore.cartLength) {
         return navigateTo('/cart')
     }
-})
+});
 </script>
 <style lang="scss" scoped>
 .order {

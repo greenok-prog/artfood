@@ -51,7 +51,7 @@ const schema = object({
 	}).required(),
 	street: string().required('Обязательное поле'),
 	house_number: string().required('Обязательное поле'),
-	apartment_number: string()
+	apartment_number: string().required('Обязательное поле'),
 })
 
 const { handleSubmit, setErrors, errors } = useForm({

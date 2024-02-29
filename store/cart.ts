@@ -36,7 +36,6 @@ export const useCartStore = defineStore("cart", {
       } else {
         this.cart.push({ product, quantity_product: quantity });
       }
-
       await this.fetchCartAdd();
       await this.setCart();
       localStorage.setItem(localName, JSON.stringify(this.cart));
@@ -74,6 +73,7 @@ export const useCartStore = defineStore("cart", {
       }
       this.setTotalDiscount();
     },
+    // попробовать поработать с этим
     async fetchCartAdd() {
       const formatedCart = this.existenceProducts.map((el) => {
         return { quantity_product: el.quantity_product, id: el.product.id };
@@ -94,9 +94,7 @@ export const useCartStore = defineStore("cart", {
     },
     setTotalDiscount() {
       this.totalDiscount = (
-        ((this.totalPrice - this.getTotalCartPrice) / this.getTotalCartPrice) *
-        100
-      ).toFixed(1);
+        ((this.totalPrice - this.getTotalCartPrice) / this.getTotalCartPrice) * 100).toFixed(1);
     },
   },
   getters: {

@@ -4,8 +4,10 @@
             <h3 class="change-info__title">
                 Адрес компании
             </h3>
-            <form class="change-info__form"
-                @submit.prevent="submitHandler">
+            <form 
+                class="change-info__form"
+                @submit.prevent="submitHandler"
+            >
                 <div class="change-info__form-inputs">
                     <VeeField name="address.city"
                         v-slot="{ errorMessage }"
@@ -44,7 +46,6 @@
                 <VBtn>Сохранить</VBtn>
             </form>
         </div>
-
     </div>
 </template>
 <script lang="ts" setup>
@@ -60,11 +61,15 @@ interface AddressBody {
     district: number,
     house_number: string,
     office_number: number
-}
+};
+
+
 const { cities } = storeToRefs(useAddress())
 const props = defineProps<{
     user: UserCompany
-}>()
+}>();
+
+
 const schema = object({
     address: object({
         street: string().required('Обязательное поле'),
@@ -76,7 +81,7 @@ const schema = object({
         district: string().required('Обязательное поле'),
 
     })
-})
+});
 
 const { handleSubmit, setErrors } = useForm({
     validationSchema: schema,
@@ -89,9 +94,11 @@ const { handleSubmit, setErrors } = useForm({
             office_number: props.user.company_address.office_number
         }
     }
-})
-const router = useRouter()
-const { value: companyAddress } = useField<AddressBody>('address')
+});
+
+
+const router = useRouter();
+const { value: companyAddress } = useField<AddressBody>('address');
 const submitHandler = handleSubmit(async () => {
     const { status, error, execute } = await useFetch(`/api/company-address/${props.user.company_address.id}`, {
         body: {
@@ -109,7 +116,6 @@ const submitHandler = handleSubmit(async () => {
     } else {
         setErrors(formatErrors(error, 'address'))
         execute()
-
     }
 })
 

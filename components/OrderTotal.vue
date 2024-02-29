@@ -1,5 +1,5 @@
 <template>
-    <div class="order-total" v-if="user">
+    <div class="order-total">
         <div class="order-total__title">Сумма к оплате</div>
         <div class="order-total__list">
             <div class="order-total__list-item">
@@ -49,13 +49,15 @@
 import { useAuthStore } from '~/store/auth';
 import { useCartStore } from '~/store/cart';
 const deliveryPrice = 0
+
 const userStore = useAuthStore()
 const { user } = storeToRefs(userStore)
 const cartStore = useCartStore()
+
 const emit = defineEmits(['order'])
 const props = defineProps<{
     addressError: boolean
-}>()
+}>();
 </script>
 <style lang="scss" scoped>
 .order-total {

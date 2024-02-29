@@ -38,8 +38,13 @@
                 <!-- <span>17 октября</span> -->
             </div>
         </div>
-        <NuxtLink to="/contacts" class="product-price__check">Посмотреть
-            адрес</NuxtLink>
+        <NuxtLink 
+          to="/contacts" 
+          class="product-price__check" 
+          target="_blank"
+        >
+          Посмотреть адрес
+        </NuxtLink>
         <div class="product-price__delivery product-price__info">
             <DeliverySvg />
             <div>

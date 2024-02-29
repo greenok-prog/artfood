@@ -1,9 +1,7 @@
 <template>
     <div class="registration-loc">
-
         <div class="registration-loc__top">
             <p>{{ Number(route.query.step) + 1 }}. Адрес</p>
-
         </div>
         <FormError v-if="serverError" class="registration-loc__error"
             :error-message="serverError" />
@@ -17,9 +15,8 @@
                     v-slot="{ errorMessage }">
                     <BaseDropdown placeholder="Город *" :options="cities"
                         v-model="address.city"
-                        :error-message="errorMessage" />
-
-
+                        :error-message="errorMessage" 
+                    />
                 </VeeField>
                 <VeeField :name="`addresses[${index}].street`"
                     v-slot="{ errorMessage }">
@@ -78,10 +75,15 @@ import { array, object, string } from 'yup';
 import { useAddress } from '~/store/address';
 import { useAuthStore } from '~/store/auth';
 import type { Address } from '~/types/api-schema';
+
+
 const store = useAuthStore()
 const { cities } = storeToRefs(useAddress())
+
 const emit = defineEmits(['goBack'])
+
 const route = useRoute()
+
 const schema = object({
     addresses: array().of(object({
         city: object({
@@ -91,7 +93,8 @@ const schema = object({
         street: string().required("Обязательное поле"),
         house_number: string().required("Обязательное поле")
     }))
-})
+});
+
 const { handleSubmit, errors } = useForm({
     validationSchema: schema,
     initialValues: {
@@ -102,27 +105,27 @@ const { handleSubmit, errors } = useForm({
                 street: '',
                 house_number: '',
                 apartment_number: null,
-
             }
         ],
         agree: false
     }
-})
+});
 const newAddress: Address = {
     city: {},
     floor: null,
     street: '',
     house_number: '',
     apartment_number: null,
+};
 
-}
 const serverError = ref('')
 const { value: addresses } = useField<Address[]>('addresses')
 const { value: agree } = useField<boolean>('agree')
 
 const navigateToBack = () => {
     return navigateTo('/auth/registration/individual?step=1')
-}
+};
+
 const submit = handleSubmit(async () => {
 
     const fetchData = {
@@ -141,18 +144,14 @@ const submit = handleSubmit(async () => {
         const res = await $fetch('/api/registration-individual', {
             method: 'post',
             body: fetchData
-        })
-
-
+        });
         await useRouter().push('/auth/registration/message')
     } catch (e) {
         serverError.value = 'Ошибка при регистрации'
-
-
         store.setRegistrationErrors(e.data.data)
     }
 
-})
+});
 </script>
 
 <style lang="scss" scoped>

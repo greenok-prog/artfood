@@ -97,33 +97,27 @@ const submitHandler = handleSubmit(async () => {
 
     store.setRegistrationErrors(null)
 
-
-
     try {
         const res = await $fetch('/api/registration-individual', {
             method: 'post',
             body: { ...user.value, password_repeat: user.value.password }
         })
-
-
         await useRouter().push('/auth/registration/message')
     } catch (e) {
         setErrors(formatFetchErrors(e.data.data, 'user'))
-
     }
 
-})
+});
+
 const backHandler = () => {
     return navigateTo('/auth/registration')
-}
+};
+
 watchEffect(() => {
     if (registrationErrors.value) {
-
-
-
         setErrors(formatFetchErrors(registrationErrors.value, 'user'));
     }
-})
+});
 </script>
 <style lang="scss" scoped>
 .form {
