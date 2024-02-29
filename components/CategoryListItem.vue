@@ -1,7 +1,12 @@
 <template>
     <div class="category-card">
-        <img v-if="category.image" :src="category.image" alt=""
-            class="category-card__image">
+        <img 
+          v-if="category.image" 
+          :src="category.image" 
+          alt=""
+          class="category-card__image"
+          @click="$router.push({path:`/catalog?subcategory=${category.id}` })"
+        >
         <div class="category-card__info">
             <h4 class="category-card__name">{{ category.name }}
             </h4>

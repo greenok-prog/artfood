@@ -49,19 +49,21 @@ const moveToHistoryUrl = (list: number, url: string): void => {
     }
 }
 .path-item {
-    cursor: pointer;
+  cursor: pointer;
 }
 .path-item__link-current {
-    color:black
+  color:black
 }
 .path-item__link {
-    box-sizing: border-box;
-    margin-bottom: 1px;
-    cursor: pointer;
-    &:hover {
-        border-bottom: 1px solid #737781;
-        box-sizing: border-box;
-        margin-bottom: 0px;
-    }
+  margin-top: 1px;
+
+  box-sizing: border-box;
+  margin-bottom: 1px;
+  cursor: pointer;
+  &:hover {
+      border-bottom: 1px solid #737781;
+      box-sizing: border-box;
+      margin-bottom: 0px;
+  }
 }
 </style>

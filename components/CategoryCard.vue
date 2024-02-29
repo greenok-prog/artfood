@@ -38,6 +38,7 @@ const router = useRouter();
         width: 100%;
         border-radius: 24px;
         object-fit: cover;
+        cursor: pointer;
     }
 
     &__info {
