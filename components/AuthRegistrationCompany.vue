@@ -94,7 +94,8 @@ const schema = object({
     company: object({
         bank: string()
             .required('Обязательное поле')
-            .matches(/^KZ/, 'IBAN должен начинаться с "KZ"'),
+            .matches(/^KZ/, 'IBAN должен начинаться с "KZ"')
+            .matches(/^.{20}$/, 'Поле bank должно содержать 20 символов'),
         bin_iin: string()
             .required('Обязательное поле')
             .matches(/^\d{12}$/, 'Поле должно содержать 12 цифр'),
