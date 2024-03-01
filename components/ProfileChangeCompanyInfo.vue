@@ -71,12 +71,18 @@ const schema = object({
     company: object({
         company_name: string().required('Обязательное поле'),
         phone_number: string().required('Обязательное поле'),
-        bin_iin: string().required('Обязательное поле'),
+        bin_iin: string()
+            .required('Обязательное поле')
+            .matches(/^\d{12}$/, 'Поле должно содержать 12 цифр'),
         iik: string().required('Обязательное поле'),
-        bank: string().required('Обязательное поле'),
-        bik: string().required('Обязательное поле'),
+        bank: string()
+            .required('Обязательное поле')
+            .matches(/^KZ/, 'IBAN должен начинаться с "KZ"'),
+        bik: string()
+            .required('Обязательное поле')
+            .matches(/^\d{8,9}$/, 'Поле должно содержать 8 или 9 символов'),
     })
-})
+});
 const { handleSubmit, setErrors } = useForm({
     validationSchema: schema,
     initialValues: {
