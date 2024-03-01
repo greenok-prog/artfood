@@ -6,7 +6,7 @@
             в службу поддержки</h2>
         <div class="order-cancel-modal__phone">
             <span>+7 747 245-43-99</span>
-            <span>Artfood777@mail.ru</span>
+            <span>+7 771 722-94-29</span>
         </div>
         <span class="order-cancel-modal__subtitle">
             <p>
