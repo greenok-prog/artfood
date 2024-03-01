@@ -92,19 +92,24 @@ interface CompanyInfo {
 }
 const schema = object({
     company: object({
-        bank: string().required('Обязательное поле'),
-        bin_iin: string().required('Обязательное поле'),
-
+        bank: string()
+            .required('Обязательное поле')
+            .matches(/^KZ/, 'IBAN должен начинаться с "KZ"'),
+        bin_iin: string()
+            .required('Обязательное поле')
+            .matches(/^\d{12}$/, 'Поле должно содержать 12 цифр'),
+        bik: string()
+            .required('Обязательное поле')
+            .matches(/^\d{8,9}$/, 'Поле должно содержать 8 или 9 символов'),
         company_name: string().required('Обязательное поле'),
-        bik: string().required('Обязательное поле'),
         office_number: string().required('Обязательное поле'),
         street: string().required('Обязательное поле'),
         city: object({
             name: string().required('Обязательное поле')
         }),
-
     })
-})
+});
+
 const emit = defineEmits(['goToNext', 'goBack'])
 const { registrationErrors } = storeToRefs(useAuthStore())
 const { handleSubmit, setErrors, errors } = useForm({
