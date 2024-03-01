@@ -4,11 +4,9 @@ import ENDPOINTS from "~/constants/endpoints";
 export default defineEventHandler(async (event) => {
   const id = getCookie(event, "cartId");
   const body = await readBody(event);
-
-  const res = await useApi(`${ENDPOINTS.CART}delete/${id}`, {
+  const res = await useApi(`${ENDPOINTS.CART}delete`, {
     method: "delete",
     body: body,
   });
-
   return res;
 });
