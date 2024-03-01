@@ -5,8 +5,8 @@
         <h2 class="order-cancel-modal__title">Для отмены заказа обратитесь
             в службу поддержки</h2>
         <div class="order-cancel-modal__phone">
-            <span>+7 701 892-23-10</span>
-            <span>+7 705 892-24-11</span>
+            <span>+7 747 245-43-99</span>
+            <span>Artfood777@mail.ru</span>
         </div>
         <span class="order-cancel-modal__subtitle">
             <p>
