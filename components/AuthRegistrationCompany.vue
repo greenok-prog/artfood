@@ -101,7 +101,7 @@ const schema = object({
             .matches(/^\d{12}$/, 'Поле должно содержать 12 цифр'),
         bik: string()
             .required('Обязательное поле')
-            .matches(/^\d{8,9}$/, 'Поле должно содержать 8 или 9 символов'),
+            .matches(/^.{8,9}$/, 'Поле должно содержать от 8 до 9 символов'),
         company_name: string().required('Обязательное поле'),
         office_number: string().required('Обязательное поле'),
         street: string().required('Обязательное поле'),
