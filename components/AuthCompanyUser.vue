@@ -54,15 +54,16 @@ const { registrationErrors } = storeToRefs(useAuthStore())
 const emit = defineEmits(['goToNext'])
 const schema = object({
 	user: object({
-		phone_number: string().required("Обязательное поле"),
+		phone_number: string().
+		  required("Обязательное поле").
+		  matches(/^\+7 \(\d{3}\) \d{3} \d{2} \d{2}$/, 'Некорректный формат телефона (ожидается +7 (XXX) XXX-XX-XX)'),
 		email: string().required("Обязательное поле").email("Неверный формат email"),
 		password: string().required("Обязательное поле").min(8, "Длина пароля должна быть больше 8 символов"),
 		username: string().required("Обязательное поле"),
 		last_name: string().required("Обязательное поле"),
 		second_name: string(),
 	})
-
-})
+});
 interface User {
 	username: string,
 	last_name: string,

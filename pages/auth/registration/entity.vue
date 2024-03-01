@@ -4,17 +4,17 @@
             <h3>Регистрация юридического лица</h3>
         </div>
         <KeepAlive>
-            <AuthCompanyUser v-if="route.query.step === '1'"
+            <AuthCompanyUser v-show="route.query.step === '1'"
                 @goToNext="goToCompanyForm" />
         </KeepAlive>
         <KeepAlive>
 
             <AuthRegistrationCompany @goToNext="goToLocationForm"
-                @goBack="goUserForm" v-if="route.query.step === '2'" />
+                @goBack="goUserForm" v-show="route.query.step === '2'" />
         </KeepAlive>
         <KeepAlive>
             <AuthEntityRegistrationLoc @goBack="goToCompanyForm"
-                v-if="route.query.step === '3'" />
+                v-show="route.query.step === '3'" />
         </KeepAlive>
     </div>
 </template>
