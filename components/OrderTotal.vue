@@ -34,13 +34,17 @@
                 онлайн</VBtn>
             <VBtn @click="emit('order', 'cash')" variant="outlined"
                 class="order-total__actions-pick">
-                Оплатить заказ при получении</VBtn>
+                {{ user.user_type === 'individual' ?
+                    'Оплатить заказ при получении' :
+                    'Запросить счет на оплату' }}
+            </VBtn>
         </div>
         <p class="order-total__message">Нажимая на кнопку, вы соглашаетесь
             с <VLink :to="'/privacy-policy'" type="underline">
                 Условиями обработки персональных данных
             </VLink>,
-            а также с <VLink :to="'/return-policy'" type="underline">Условиями продажи
+            а также с <VLink :to="'/return-policy'" type="underline">
+                Условиями продажи
             </VLink>
         </p>
     </div>
