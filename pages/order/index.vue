@@ -2,14 +2,11 @@
     <div class="order">
         <div class="container">
             <div class="order__top">
-                <PathHistory 
-                  class="order__path"
-                  :path="[
-                    {name:'Главная', url: '/'}, 
-                    {name:'Корзина', url: '/cart'}, 
-                    {name:'Оформление заказа', url: '/order'},
-                  ]" 
-                />
+                <PathHistory class="order__path" :path="[
+                    { name: 'Главная', url: '/' },
+                    { name: 'Корзина', url: '/cart' },
+                    { name: 'Оформление заказа', url: '/order' },
+                ]" />
             </div>
             <div class="order__header">
                 <ProfileBack class="order__header-back"
@@ -23,8 +20,8 @@
             </div>
             <div class="order__content">
                 <div v-if="data" class="order__content-left">
-                    <OrderInvoicePayment
-                        v-if="data.user_type === 'company'" />
+                    <!-- <OrderInvoicePayment
+                        v-if="data.user_type === 'company'" /> -->
                     <OrderReceivingMethod @select-method="selectMethod" />
                     <OrderReceivingAdress :addresses="data.addresses"
                         @onAdd="refresh" />
@@ -33,11 +30,9 @@
                         v-if="data.user_type === 'company'"
                         :user="data" />
                 </div>
-                <OrderTotal 
-                  @order="submitHandler"
-                  :addressError="addressError"
-                  class="order__content-total" 
-                />
+                <OrderTotal @order="submitHandler"
+                    :addressError="addressError"
+                    class="order__content-total" />
             </div>
         </div>
     </div>
