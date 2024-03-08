@@ -8,7 +8,7 @@
             <span>+7 747 245-43-99</span>
             <span>+7 771 722-94-29</span>
         </div>
-        <span class="order-cancel-modal__subtitle">
+        <!-- <span class="order-cancel-modal__subtitle">
             <p>
                 Или заполните форму обратной связи и с вами свяжется
                 наш менеджер для отмены заказа
@@ -19,7 +19,7 @@
             <BaseInput placeholder="Телефон" />
             <BaseInput placeholder="Номер заказа" />
             <VBtn>Запросить отмену заказа</VBtn>
-        </form>
+        </form> -->
     </VueFinalModal>
 </template>
 

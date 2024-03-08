@@ -66,9 +66,6 @@
                             <NuxtLink to="/contacts">Контакты</NuxtLink>
 
                         </div>
-                        <NuxtLink to="/delivery-and-pickup"
-                            class="footer__company-block">Доставка и
-                            самовывоз</NuxtLink>
                         <NuxtLink to="/payment-and-delivery"
                             class="footer__company-block">Оплата
                         </NuxtLink>
@@ -92,10 +89,10 @@
                     </NuxtLink>
                 </li>
                 <li class="footer__bottom-card">
-                    <MasterCardSvg />
+                    <img src="/mastercard.png" alt="mastercard">
                 </li>
                 <li class="footer__bottom-card">
-                    <VisaSvg />
+                    <img src="/visa.png" alt="mastercard">
                 </li>
 
             </ul>
@@ -185,9 +182,10 @@ onMounted(async () => {
         border-top: 1px solid rgba(255, 255, 255, 0.6);
 
         &-card {
-            background: white;
-            height: 48px;
-            width: 100px;
+
+
+            max-width: 100px;
+            height: auto;
 
             svg {
                 height: 100%;

@@ -4,10 +4,20 @@
         <div class="profile-documents__list">
             <div class="profile-documents__item"
                 v-for="document in documents" :key="document.id">
-                <h4>{{ document.name }}</h4>
-                <a download :href="document.file_payment_invoice"
-                    target="_blank">
-                    Скачать</a>
+                <div v-if="document.file_payment_invoice">
+                    <h4>{{ document.file_payment_invoice.name }}</h4>
+                    <a download
+                        :href="document.file_payment_invoice.file_payment_invoice"
+                        target="_blank">
+                        Скачать</a>
+                </div>
+                <div v-else>
+                    <h4>{{ document.file_avr.name }}</h4>
+                    <a download :href="document.file_avr.file_avr"
+                        target="_blank">
+                        Скачать</a>
+                </div>
+
             </div>
         </div>
     </div>
